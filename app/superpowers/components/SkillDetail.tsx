@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { BookOpen, Clock, Terminal, ListOrdered, MessageSquare, Zap } from "lucide-react";
 import type { SkillData } from "../data/types";
 
 interface SkillDetailProps {
@@ -56,7 +57,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
           className="text-base font-semibold mb-4 flex items-center gap-2"
           style={{ color: "var(--text-primary)" }}
         >
-          📖 這個技能在做什麼？
+          <BookOpen size={15} style={{ color: "var(--text-tertiary)" }} /> 這個技能在做什麼？
         </h2>
         <div className="space-y-3">
           {skill.whatItDoes.split("\n\n").map((para) => (
@@ -83,7 +84,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
           className="text-base font-semibold mb-4 flex items-center gap-2"
           style={{ color: "var(--text-primary)" }}
         >
-          🕐 什麼時候用？
+          <Clock size={15} style={{ color: "var(--text-tertiary)" }} /> 什麼時候用？
         </h2>
         <ul className="space-y-2">
           {skill.whenToUse.map((item, i) => (
@@ -112,7 +113,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
           className="text-base font-semibold mb-4 flex items-center gap-2"
           style={{ color: "var(--text-primary)" }}
         >
-          💬 如何啟用？
+          <Terminal size={15} style={{ color: "var(--text-tertiary)" }} /> 如何啟用？
         </h2>
         <div
           className="rounded-lg p-4 font-mono text-sm"
@@ -144,7 +145,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
             className="text-base font-semibold mb-5 flex items-center gap-2"
             style={{ color: "var(--text-primary)" }}
           >
-            🔢 執行步驟
+            <ListOrdered size={15} style={{ color: "var(--text-tertiary)" }} /> 執行步驟
           </h2>
           <div className="space-y-0">
             {skill.steps.map((step, i) => (
@@ -214,7 +215,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
             className="text-base font-semibold mb-5 flex items-center gap-2"
             style={{ color: "var(--text-primary)" }}
           >
-            🤖 對話範例
+            <MessageSquare size={15} style={{ color: "var(--text-tertiary)" }} /> 對話範例
           </h2>
           <div className="space-y-4">
             {skill.chatExample.map((msg, i) => (
@@ -224,10 +225,10 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
               >
                 {msg.role === "claude" && (
                   <div
-                    className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm"
-                    style={{ backgroundColor: "rgba(124,106,239,0.2)" }}
+                    className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
+                    style={{ backgroundColor: "rgba(124,106,239,0.2)", color: "var(--accent-brand)" }}
                   >
-                    🤖
+                    C
                   </div>
                 )}
                 <div
@@ -252,10 +253,10 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
                 </div>
                 {msg.role === "user" && (
                   <div
-                    className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-sm"
-                    style={{ backgroundColor: "rgba(96,165,250,0.15)" }}
+                    className="shrink-0 w-8 h-8 rounded-full flex items-center justify-center text-xs font-bold"
+                    style={{ backgroundColor: "rgba(96,165,250,0.15)", color: "var(--accent-blue)" }}
                   >
-                    👤
+                    U
                   </div>
                 )}
               </div>
@@ -271,7 +272,7 @@ export default function SkillDetail({ skill, allSkills }: SkillDetailProps) {
             className="text-base font-semibold mb-4 flex items-center gap-2"
             style={{ color: "var(--text-primary)" }}
           >
-            ⚡ 核心原則
+            <Zap size={15} style={{ color: "var(--text-tertiary)" }} /> 核心原則
           </h2>
           <div className="space-y-2">
             {skill.keyPrinciples.map((principle) => (

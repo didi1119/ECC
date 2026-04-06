@@ -39,6 +39,9 @@
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* On-accent text color (for buttons with accent background) */
+  --color-on-accent: #ffffff;
 }
 
 * {

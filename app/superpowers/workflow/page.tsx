@@ -47,8 +47,8 @@ export default function WorkflowPage() {
                 完整流程
               </div>
               <h1
-                className="text-3xl font-bold mb-4"
-                style={{ color: "var(--text-primary)" }}
+                className="font-bold mb-4"
+                style={{ color: "var(--text-primary)", fontSize: "clamp(1.5rem, 4vw, 2.25rem)" }}
               >
                 7 步驟開發工作流程
               </h1>
@@ -191,7 +191,7 @@ export default function WorkflowPage() {
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-sm transition-all"
                 style={{
                   backgroundColor: "var(--accent-brand)",
-                  color: "#fff",
+                  color: "var(--color-on-accent, #fff)",
                 }}
               >
                 開始 Brainstorming →

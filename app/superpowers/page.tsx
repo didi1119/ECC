@@ -4,6 +4,9 @@ import RevealOnScroll from "../components/RevealOnScroll";
 import PhaseSection from "./components/PhaseSection";
 import { ALL_SKILLS, PHASES, SKILLS_BY_PHASE, SKILLS_BY_SLUG } from "./data";
 
+// Helper to get phase color by id
+const phaseColor = (id: string) => PHASES.find((p) => p.id === id)?.color ?? "var(--accent-brand)";
+
 export const metadata = {
   title: "Superpowers — 為 Claude Code 打造的技能庫",
   description:
@@ -16,7 +19,7 @@ const INSTALL_STEPS = [
     title: "Clone 技能庫",
     description: "將 Superpowers 技能庫加入你的專案",
     code: "git clone https://github.com/obra/superpowers vendor/superpowers",
-    color: "#60a5fa",
+    phaseId: "planning",
   },
   {
     step: "2",
@@ -24,14 +27,14 @@ const INSTALL_STEPS = [
     description: "將技能複製到 Claude Code 全域技能目錄",
     code: ".\\scripts\\install-superpowers.ps1",
     codeAlt: "bash scripts/install-superpowers.sh",
-    color: "#34d399",
+    phaseId: "git",
   },
   {
     step: "3",
     title: "驗證安裝",
     description: "在 Claude Code 中輸入以下指令確認安裝成功",
     code: "use superpowers:using-superpowers",
-    color: "#7c6aef",
+    phaseId: "meta",
   },
 ];
 
@@ -63,6 +66,15 @@ export default function SuperpowersPage() {
             style={{
               background:
                 "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(124,106,239,0.12) 0%, transparent 70%)",
+            }}
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{
+              backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px)",
+              backgroundSize: "24px 24px",
+              maskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 80%)",
+              WebkitMaskImage: "radial-gradient(ellipse 80% 60% at 50% 0%, black 0%, transparent 80%)",
             }}
           />
           <div className="max-w-3xl mx-auto relative z-10">
@@ -111,7 +123,7 @@ export default function SuperpowersPage() {
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-xl font-medium text-sm transition-all"
                   style={{
                     backgroundColor: "var(--accent-brand)",
-                    color: "#fff",
+                    color: "var(--color-on-accent, #fff)",
                   }}
                 >
                   7 步驟工作流程 →
@@ -172,7 +184,7 @@ export default function SuperpowersPage() {
         <RevealOnScroll delay={150}>
           <section className="px-4 pb-16">
             <div className="max-w-3xl mx-auto">
-              <div className="grid grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                 {[
                   { value: "14", label: "個技能", color: "var(--accent-brand)" },
                   { value: "6", label: "個階段", color: "var(--accent-green)" },
@@ -223,7 +235,9 @@ export default function SuperpowersPage() {
               </p>
 
               <div className="space-y-4">
-                {INSTALL_STEPS.map((s) => (
+                {INSTALL_STEPS.map((s) => {
+                  const c = phaseColor(s.phaseId);
+                  return (
                   <div
                     key={s.step}
                     className="rounded-xl border p-5"
@@ -236,9 +250,9 @@ export default function SuperpowersPage() {
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold shrink-0"
                         style={{
-                          backgroundColor: `${s.color}18`,
-                          border: `2px solid ${s.color}40`,
-                          color: s.color,
+                          backgroundColor: `${c}18`,
+                          border: `2px solid ${c}40`,
+                          color: c,
                         }}
                       >
                         {s.step}
@@ -259,9 +273,9 @@ export default function SuperpowersPage() {
                         <code
                           className="block text-xs font-mono px-3 py-2 rounded-lg overflow-x-auto"
                           style={{
-                            backgroundColor: `${s.color}0e`,
-                            border: `1px solid ${s.color}25`,
-                            color: s.color,
+                            backgroundColor: `${c}0e`,
+                            border: `1px solid ${c}25`,
+                            color: c,
                           }}
                         >
                           {s.code}
@@ -281,7 +295,8 @@ export default function SuperpowersPage() {
                       </div>
                     </div>
                   </div>
-                ))}
+                  );
+                })}
               </div>
             </div>
           </section>
