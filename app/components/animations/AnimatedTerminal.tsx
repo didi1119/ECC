@@ -43,7 +43,6 @@ export default function AnimatedTerminal({
   useEffect(() => {
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
-    // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(0);
 
     lines.forEach((line, i) => {
