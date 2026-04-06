@@ -5,7 +5,7 @@ export interface PipelineStage {
   id: string;
   label: string;
   icon: string;
-  duration: number; // ms this stage takes to complete
+  duration: number;
   agent?: string;
 }
 
@@ -37,7 +37,6 @@ export default function ProgressPipeline({
     let cumulativeDelay = 300;
 
     stages.forEach((stage, idx) => {
-      // Start stage
       const startT = setTimeout(() => {
         setStatuses((prev) => {
           const next = [...prev];
@@ -45,7 +44,6 @@ export default function ProgressPipeline({
           return next;
         });
 
-        // Animate progress bar
         const steps = 20;
         for (let step = 1; step <= steps; step++) {
           const t = setTimeout(() => {
@@ -60,7 +58,6 @@ export default function ProgressPipeline({
       }, cumulativeDelay);
       timeoutsRef.current.push(startT);
 
-      // Complete stage
       const doneT = setTimeout(() => {
         setStatuses((prev) => {
           const next = [...prev];
@@ -96,13 +93,13 @@ export default function ProgressPipeline({
             aria-live="polite"
             className="rounded-lg p-3"
             style={{
-              backgroundColor: status === "done" ? "rgba(63,185,80,0.06)" : "#161b22",
+              backgroundColor: status === "done" ? "rgba(52,211,153,0.06)" : "var(--bg-surface-1)",
               border: `1px solid ${
                 status === "done"
-                  ? "rgba(63,185,80,0.3)"
+                  ? "rgba(52,211,153,0.25)"
                   : status === "running"
-                  ? "rgba(88,166,255,0.4)"
-                  : "#30363d"
+                  ? "rgba(96,165,250,0.35)"
+                  : "var(--border-subtle)"
               }`,
               transition: "border-color 0.3s ease, background-color 0.3s ease",
             }}
@@ -116,20 +113,20 @@ export default function ProgressPipeline({
                     style={{
                       color:
                         status === "done"
-                          ? "#3fb950"
+                          ? "var(--accent-green)"
                           : status === "running"
-                          ? "#e6edf3"
-                          : "#8b949e",
+                          ? "var(--text-primary)"
+                          : "var(--text-secondary)",
                     }}
                   >
                     {stage.label}
                   </span>
-                  <span className="text-xs font-mono" style={{ color: "#6e7681" }}>
-                    {status === "done" ? "✓ 完成" : status === "running" ? `${progress}%` : "等待中"}
+                  <span className="text-xs font-mono" style={{ color: "var(--text-tertiary)" }}>
+                    {status === "done" ? "ok 完成" : status === "running" ? `${progress}%` : "等待中"}
                   </span>
                 </div>
                 {stage.agent && (
-                  <span className="text-xs" style={{ color: "#6e7681" }}>
+                  <span className="text-xs" style={{ color: "var(--text-tertiary)" }}>
                     by {stage.agent}
                   </span>
                 )}
@@ -137,12 +134,12 @@ export default function ProgressPipeline({
             </div>
 
             {/* Progress bar */}
-            <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: "#21262d" }}>
+            <div className="h-1 rounded-full overflow-hidden" style={{ backgroundColor: "var(--bg-surface-2)" }}>
               <div
                 className="h-full rounded-full"
                 style={{
                   width: `${progress}%`,
-                  backgroundColor: status === "done" ? "#3fb950" : "#58a6ff",
+                  backgroundColor: status === "done" ? "var(--accent-green)" : "var(--accent-blue)",
                   transition: "width 0.15s ease",
                 }}
               />

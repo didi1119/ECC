@@ -76,16 +76,16 @@ const afterGuard = `{
 
 export default function HooksSetupPage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0d1117" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
       <Navbar />
       <div className="max-w-3xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
-          <Link href="/" className="text-xs hover:underline" style={{ color: "#8b949e" }}>首頁</Link>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#f85149" }}>高手情境</span>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#ffa657" }}>Hooks 自動化設定</span>
+          <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-orange)" }}>Hooks 自動化設定</span>
         </div>
 
         {/* Header */}
@@ -94,31 +94,31 @@ export default function HooksSetupPage() {
             <span className="text-4xl">🪝</span>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-3xl font-bold" style={{ color: "#e6edf3" }}>Hooks 自動化設定</h1>
-                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(248,81,73,0.15)", color: "#f85149", border: "1px solid rgba(248,81,73,0.3)" }}>高手</span>
+                <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>Hooks 自動化設定</h1>
+                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(244,114,182,0.15)", color: "var(--accent-rose)", border: "1px solid rgba(244,114,182,0.3)" }}>高手</span>
               </div>
-              <p style={{ color: "#ffa657" }}>讓 Claude 每次寫完程式碼就自動格式化、Lint、型別檢查</p>
+              <p style={{ color: "var(--accent-orange)" }}>讓 Claude 每次寫完程式碼就自動格式化、Lint、型別檢查</p>
             </div>
           </div>
-          <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(88,166,255,0.06)", border: "1px solid rgba(88,166,255,0.2)" }}>
-            <p className="text-sm font-semibold mb-1" style={{ color: "#58a6ff" }}>📋 前置需求</p>
-            <p className="text-sm" style={{ color: "#8b949e" }}>
-              確認你的 <code style={{ color: "#e6edf3" }}>package.json</code> 有 <code style={{ color: "#e6edf3" }}>format</code>、<code style={{ color: "#e6edf3" }}>lint</code> 腳本，以及 <code style={{ color: "#e6edf3" }}>vitest</code> 或 <code style={{ color: "#e6edf3" }}>jest</code> 已安裝。
+          <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(96,165,250,0.06)", border: "1px solid rgba(96,165,250,0.2)" }}>
+            <p className="text-sm font-semibold mb-1" style={{ color: "var(--accent-blue)" }}>📋 前置需求</p>
+            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+              確認你的 <code style={{ color: "var(--text-primary)" }}>package.json</code> 有 <code style={{ color: "var(--text-primary)" }}>format</code>、<code style={{ color: "var(--text-primary)" }}>lint</code> 腳本，以及 <code style={{ color: "var(--text-primary)" }}>vitest</code> 或 <code style={{ color: "var(--text-primary)" }}>jest</code> 已安裝。
             </p>
           </div>
         </div>
 
         {/* Steps Overview */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>📋 設定流程</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>📋 設定流程</h2>
           <StepFlow steps={hookSteps} />
         </div>
 
         {/* Step 1 */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>步驟 1：建立 PostToolUse Hook</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>
-            在專案根目錄建立或修改 <code style={{ color: "#e6edf3" }}>.claude.json</code>（或 <code style={{ color: "#e6edf3" }}>~/.claude/settings.json</code> 設定全域 hooks）：
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>步驟 1：建立 PostToolUse Hook</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
+            在專案根目錄建立或修改 <code style={{ color: "var(--text-primary)" }}>.claude.json</code>（或 <code style={{ color: "var(--text-primary)" }}>~/.claude/settings.json</code> 設定全域 hooks）：
           </p>
           <CodeDiff
             before={beforeJson}
@@ -138,8 +138,8 @@ export default function HooksSetupPage() {
 
         {/* Step 2 */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>步驟 2：加入 PreToolUse 守衛（防止巨型檔案）</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>步驟 2：加入 PreToolUse 守衛（防止巨型檔案）</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             這個守衛會在 Claude 寫出超過 800 行的檔案前攔截，強制拆分成小模組：
           </p>
           <CodeDiff
@@ -159,22 +159,22 @@ export default function HooksSetupPage() {
 
         {/* Step 3: Hook 觸發示意 */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>步驟 3：確認 Hook 正常觸發</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>設定完成後，讓 Claude 修改任意一個檔案，你應該會看到類似這樣的輸出：</p>
-          <div className="rounded-xl p-4 font-mono text-xs space-y-1" style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}>
-            <div style={{ color: "#58a6ff" }}>✏️  Edit: src/utils/cart.ts</div>
-            <div style={{ color: "#8b949e" }}>⚡ Hook: Auto-format after every edit</div>
-            <div style={{ color: "#3fb950" }}>   → prettier --write src/utils/cart.ts ✓</div>
-            <div style={{ color: "#8b949e" }}>⚡ Hook: Lint after format</div>
-            <div style={{ color: "#3fb950" }}>   → eslint src/utils/cart.ts ✓</div>
-            <div style={{ color: "#8b949e" }}>⚡ Hook: Type-check after edit</div>
-            <div style={{ color: "#3fb950" }}>   → tsc --noEmit ✓</div>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>步驟 3：確認 Hook 正常觸發</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>設定完成後，讓 Claude 修改任意一個檔案，你應該會看到類似這樣的輸出：</p>
+          <div className="rounded-xl p-4 font-mono text-xs space-y-1" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
+            <div style={{ color: "var(--accent-blue)" }}>✏️  Edit: src/utils/cart.ts</div>
+            <div style={{ color: "var(--text-secondary)" }}>⚡ Hook: Auto-format after every edit</div>
+            <div style={{ color: "var(--accent-green)" }}>   → prettier --write src/utils/cart.ts ✓</div>
+            <div style={{ color: "var(--text-secondary)" }}>⚡ Hook: Lint after format</div>
+            <div style={{ color: "var(--accent-green)" }}>   → eslint src/utils/cart.ts ✓</div>
+            <div style={{ color: "var(--text-secondary)" }}>⚡ Hook: Type-check after edit</div>
+            <div style={{ color: "var(--accent-green)" }}>   → tsc --noEmit ✓</div>
           </div>
         </div>
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="幫我在 .claude.json 設定 PostToolUse hook，每次寫完 .ts 或 .tsx 檔案就自動跑 npm run format 和 npm run lint" description="讓 Claude 幫你設定 hooks" />
             <CommandBlock command="幫我加入 PreToolUse hook，阻擋任何超過 800 行的單一檔案寫入" description="防巨型檔案守衛" />
@@ -183,9 +183,9 @@ export default function HooksSetupPage() {
         </div>
 
         {/* Nav */}
-        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #30363d" }}>
-          <Link href="/scenarios/expert/multi-agent" className="text-sm hover:underline" style={{ color: "#8b949e" }}>← 並行 Agent</Link>
-          <Link href="/scenarios/expert/tdd-mastery" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "#58a6ff", color: "#0d1117" }}>
+        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+          <Link href="/scenarios/expert/multi-agent" className="text-sm hover:underline" style={{ color: "var(--text-secondary)" }}>← 並行 Agent</Link>
+          <Link href="/scenarios/expert/tdd-mastery" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "var(--accent-blue)", color: "var(--bg-base)" }}>
             下一個：TDD 實戰 →
           </Link>
         </div>

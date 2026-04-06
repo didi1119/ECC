@@ -103,16 +103,16 @@ const afterPrompt = `/tdd 實作 validateLoginForm(email, password) 驗證函式
 
 export default function TddMasteryPage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0d1117" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
       <Navbar />
       <div className="max-w-3xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
-          <Link href="/" className="text-xs hover:underline" style={{ color: "#8b949e" }}>首頁</Link>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#f85149" }}>高手情境</span>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#ffa657" }}>TDD 完整實戰</span>
+          <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-orange)" }}>TDD 完整實戰</span>
         </div>
 
         {/* Header */}
@@ -121,27 +121,27 @@ export default function TddMasteryPage() {
             <span className="text-4xl">🧪</span>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-3xl font-bold" style={{ color: "#e6edf3" }}>TDD 完整實戰</h1>
-                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(248,81,73,0.15)", color: "#f85149", border: "1px solid rgba(248,81,73,0.3)" }}>高手</span>
+                <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>TDD 完整實戰</h1>
+                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(244,114,182,0.15)", color: "var(--accent-rose)", border: "1px solid rgba(244,114,182,0.3)" }}>高手</span>
               </div>
-              <p style={{ color: "#ffa657" }}>RED → GREEN → IMPROVE 三階段完整教學，含常見陷阱</p>
+              <p style={{ color: "var(--accent-orange)" }}>RED → GREEN → IMPROVE 三階段完整教學，含常見陷阱</p>
             </div>
           </div>
         </div>
 
         {/* TDD Cycle Visual */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🔄 TDD 三階段</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔄 TDD 三階段</h2>
           <div className="grid grid-cols-3 gap-3">
             {[
-              { phase: "RED", desc: "先寫會失敗的測試", color: "#f85149", bg: "rgba(248,81,73,0.1)", detail: "明確定義你要的行為，測試跑起來要是紅的" },
-              { phase: "GREEN", desc: "最小實作通過測試", color: "#3fb950", bg: "rgba(63,185,80,0.1)", detail: "只寫讓測試通過的最少程式碼，不多不少" },
-              { phase: "IMPROVE", desc: "重構不改行為", color: "#58a6ff", bg: "rgba(88,166,255,0.1)", detail: "清理程式碼，全程保持測試是綠的" },
+              { phase: "RED", desc: "先寫會失敗的測試", color: "var(--accent-rose)", bg: "rgba(244,114,182,0.1)", detail: "明確定義你要的行為，測試跑起來要是紅的" },
+              { phase: "GREEN", desc: "最小實作通過測試", color: "var(--accent-green)", bg: "rgba(52,211,153,0.1)", detail: "只寫讓測試通過的最少程式碼，不多不少" },
+              { phase: "IMPROVE", desc: "重構不改行為", color: "var(--accent-blue)", bg: "rgba(96,165,250,0.1)", detail: "清理程式碼，全程保持測試是綠的" },
             ].map((p) => (
               <div key={p.phase} className="rounded-xl p-4" style={{ backgroundColor: p.bg, border: `1px solid ${p.color}25` }}>
                 <div className="text-xl font-bold mb-1" style={{ color: p.color }}>{p.phase}</div>
-                <div className="text-xs font-medium mb-2" style={{ color: "#e6edf3" }}>{p.desc}</div>
-                <div className="text-xs" style={{ color: "#8b949e" }}>{p.detail}</div>
+                <div className="text-xs font-medium mb-2" style={{ color: "var(--text-primary)" }}>{p.desc}</div>
+                <div className="text-xs" style={{ color: "var(--text-secondary)" }}>{p.detail}</div>
               </div>
             ))}
           </div>
@@ -149,8 +149,8 @@ export default function TddMasteryPage() {
 
         {/* Prompt Quality Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>📝 提示詞品質對比</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>提示越具體，Claude 產出的測試越精準：</p>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📝 提示詞品質對比</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>提示越具體，Claude 產出的測試越精準：</p>
           <CodeDiff
             before={beforePrompt}
             after={afterPrompt}
@@ -167,10 +167,10 @@ export default function TddMasteryPage() {
 
         {/* RED Phase Demo */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>
-            <span style={{ color: "#f85149" }}>RED</span> 階段示範
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>
+            <span style={{ color: "var(--accent-rose)" }}>RED</span> 階段示範
           </h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>Claude 先寫測試，測試必須失敗才代表 RED 階段正確：</p>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>Claude 先寫測試，測試必須失敗才代表 RED 階段正確：</p>
           <ChatDemo messages={redPhaseChat} />
           <div className="mt-4">
             <PitfallBox type="warning" title="一定要確認測試真的 FAIL">
@@ -181,8 +181,8 @@ export default function TddMasteryPage() {
 
         {/* GREEN + IMPROVE Phase Demo */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>
-            <span style={{ color: "#3fb950" }}>GREEN</span> + <span style={{ color: "#58a6ff" }}>IMPROVE</span> 階段示範
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>
+            <span style={{ color: "var(--accent-green)" }}>GREEN</span> + <span style={{ color: "var(--accent-blue)" }}>IMPROVE</span> 階段示範
           </h2>
           <ChatDemo messages={greenPhaseChat} />
           <div className="mt-4">
@@ -194,27 +194,27 @@ export default function TddMasteryPage() {
 
         {/* Coverage */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>📊 Coverage 怎麼看</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>跑 <code style={{ color: "#e6edf3" }}>npx vitest run --coverage</code> 後看報告：</p>
-          <div className="rounded-xl p-4 font-mono text-xs" style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}>
-            <div className="grid grid-cols-4 gap-2 mb-2 text-xs font-bold" style={{ color: "#8b949e" }}>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📊 Coverage 怎麼看</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>跑 <code style={{ color: "var(--text-primary)" }}>npx vitest run --coverage</code> 後看報告：</p>
+          <div className="rounded-xl p-4 font-mono text-xs" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
+            <div className="grid grid-cols-4 gap-2 mb-2 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>
               <span>File</span><span>Stmts</span><span>Branch</span><span>Lines</span>
             </div>
-            <div className="grid grid-cols-4 gap-2 text-xs" style={{ color: "#3fb950" }}>
+            <div className="grid grid-cols-4 gap-2 text-xs" style={{ color: "var(--accent-green)" }}>
               <span>cart.ts</span><span>100%</span><span>100%</span><span>100%</span>
             </div>
-            <div className="grid grid-cols-4 gap-2 text-xs" style={{ color: "#ffa657" }}>
+            <div className="grid grid-cols-4 gap-2 text-xs" style={{ color: "var(--accent-orange)" }}>
               <span>checkout.ts</span><span>72%</span><span>60%</span><span>71%</span>
             </div>
           </div>
-          <p className="text-xs mt-2" style={{ color: "#8b949e" }}>
+          <p className="text-xs mt-2" style={{ color: "var(--text-secondary)" }}>
             Branch coverage 低 = 有 if/else 分支沒被測試到。優先補這些 case，而不是追求 100% 行覆蓋率。
           </p>
         </div>
 
         {/* Good /tdd prompt */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🚀 好的 /tdd 提示詞範本</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 好的 /tdd 提示詞範本</h2>
           <div className="space-y-3">
             <CommandBlock command={badPrompt} description="❌ 太模糊，Claude 可能跳過 RED" />
             <CommandBlock command={goodPrompt} description="✅ 具體明確，確保 RED → GREEN 流程" />
@@ -223,9 +223,9 @@ export default function TddMasteryPage() {
         </div>
 
         {/* Nav */}
-        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #30363d" }}>
-          <Link href="/scenarios/expert/hooks-setup" className="text-sm hover:underline" style={{ color: "#8b949e" }}>← Hooks 設定</Link>
-          <Link href="/scenarios/expert/prompt-engineering" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "#bc8cff", color: "#0d1117" }}>
+        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+          <Link href="/scenarios/expert/hooks-setup" className="text-sm hover:underline" style={{ color: "var(--text-secondary)" }}>← Hooks 設定</Link>
+          <Link href="/scenarios/expert/prompt-engineering" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "var(--accent-brand)", color: "var(--bg-base)" }}>
             下一個：提示工程 →
           </Link>
         </div>

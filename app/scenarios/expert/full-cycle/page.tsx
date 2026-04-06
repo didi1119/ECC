@@ -116,16 +116,16 @@ const safePath = \`avatars/\${userId}/\${randomUUID()}\${ext}\`;`;
 
 export default function FullCyclePage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0d1117" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
       <Navbar />
       <div className="max-w-3xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
-          <Link href="/" className="text-xs hover:underline" style={{ color: "#8b949e" }}>首頁</Link>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#f85149" }}>高手情境</span>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#ffa657" }}>完整功能開發全流程</span>
+          <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-orange)" }}>完整功能開發全流程</span>
         </div>
 
         {/* Header */}
@@ -134,15 +134,15 @@ export default function FullCyclePage() {
             <span className="text-4xl">🚀</span>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-3xl font-bold" style={{ color: "#e6edf3" }}>完整功能開發全流程</h1>
-                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(248,81,73,0.15)", color: "#f85149", border: "1px solid rgba(248,81,73,0.3)" }}>高手 · 總結篇</span>
+                <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>完整功能開發全流程</h1>
+                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(244,114,182,0.15)", color: "var(--accent-rose)", border: "1px solid rgba(244,114,182,0.3)" }}>高手 · 總結篇</span>
               </div>
-              <p style={{ color: "#ffa657" }}>把所有高手技巧串成一條完整的開發流水線</p>
+              <p style={{ color: "var(--accent-orange)" }}>把所有高手技巧串成一條完整的開發流水線</p>
             </div>
           </div>
-          <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(63,185,80,0.06)", border: "1px solid rgba(63,185,80,0.2)" }}>
-            <p className="text-sm font-semibold mb-1" style={{ color: "#3fb950" }}>📖 本篇案例：用戶大頭貼上傳功能</p>
-            <p className="text-sm" style={{ color: "#8b949e" }}>
+          <div className="rounded-xl p-4" style={{ backgroundColor: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)" }}>
+            <p className="text-sm font-semibold mb-1" style={{ color: "var(--accent-green)" }}>📖 本篇案例：用戶大頭貼上傳功能</p>
+            <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
               一個真實的功能需求，從規劃到 commit，走完 7 個步驟，串聯所有前面學過的技巧。
             </p>
           </div>
@@ -150,17 +150,17 @@ export default function FullCyclePage() {
 
         {/* Full pipeline overview */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🗺️ 七步驟全流程</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🗺️ 七步驟全流程</h2>
           <StepFlow steps={cycleSteps} />
         </div>
 
         {/* Step 1: Plan */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(88,166,255,0.15)", color: "#58a6ff" }}>步驟 1</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>/plan — 規劃功能</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(96,165,250,0.15)", color: "var(--accent-blue)" }}>步驟 1</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>/plan — 規劃功能</h2>
           </div>
-          <p className="text-sm mb-3" style={{ color: "#8b949e" }}>套用提示工程技巧（背景 + 需求 + 非目標 + 格式要求）：</p>
+          <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>套用提示工程技巧（背景 + 需求 + 非目標 + 格式要求）：</p>
           <CommandBlock command={planPrompt} description="完整的 /plan 提示（可直接套用修改）" />
           <div className="mt-3">
             <PitfallBox type="warning" title="確認計畫才開始實作">
@@ -172,22 +172,22 @@ export default function FullCyclePage() {
         {/* Step 2: Hooks */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(255,166,87,0.15)", color: "#ffa657" }}>步驟 2</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>設定 Hooks（一次設定，長期受益）</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(251,191,36,0.15)", color: "var(--accent-orange)" }}>步驟 2</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>設定 Hooks（一次設定，長期受益）</h2>
           </div>
-          <p className="text-sm mb-3" style={{ color: "#8b949e" }}>在開始寫程式碼之前，先設定好自動化 hooks：</p>
+          <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>在開始寫程式碼之前，先設定好自動化 hooks：</p>
           <CommandBlock command="幫我設定 PostToolUse hook：每次修改 .ts / .tsx 後自動跑 npm run format、npm run lint、npx tsc --noEmit" description="設定三道自動檢查關卡" />
-          <p className="text-xs mt-2" style={{ color: "#8b949e" }}>
+          <p className="text-xs mt-2" style={{ color: "var(--text-secondary)" }}>
             設定完成後，後面所有步驟的程式碼修改都會被自動驗證。詳見
-            <Link href="/scenarios/expert/hooks-setup" style={{ color: "#58a6ff" }} className="underline ml-1">Hooks 設定教學</Link>。
+            <Link href="/scenarios/expert/hooks-setup" style={{ color: "var(--accent-blue)" }} className="underline ml-1">Hooks 設定教學</Link>。
           </p>
         </div>
 
         {/* Step 3+4: TDD */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(63,185,80,0.15)", color: "#3fb950" }}>步驟 3-4</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>/tdd — 核心邏輯 + API</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(52,211,153,0.15)", color: "var(--accent-green)" }}>步驟 3-4</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>/tdd — 核心邏輯 + API</h2>
           </div>
           <div className="space-y-3">
             <CommandBlock
@@ -199,16 +199,16 @@ export default function FullCyclePage() {
               description="再 TDD API 端點（整合測試）"
             />
           </div>
-          <p className="text-xs mt-2" style={{ color: "#8b949e" }}>
-            詳見 <Link href="/scenarios/expert/tdd-mastery" style={{ color: "#58a6ff" }} className="underline">TDD 完整實戰教學</Link>。
+          <p className="text-xs mt-2" style={{ color: "var(--text-secondary)" }}>
+            詳見 <Link href="/scenarios/expert/tdd-mastery" style={{ color: "var(--accent-blue)" }} className="underline">TDD 完整實戰教學</Link>。
           </p>
         </div>
 
         {/* Step 5: Code Review */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(188,140,255,0.15)", color: "#bc8cff" }}>步驟 5</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>/code-review</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(124,106,239,0.15)", color: "var(--accent-brand)" }}>步驟 5</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>/code-review</h2>
           </div>
           <ChatDemo messages={reviewChat} />
           <div className="mt-3">
@@ -221,12 +221,12 @@ export default function FullCyclePage() {
         {/* Step 6: Security Review */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(248,81,73,0.15)", color: "#f85149" }}>步驟 6</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>/security-review（檔案上傳必做）</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(244,114,182,0.15)", color: "var(--accent-rose)" }}>步驟 6</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>/security-review（檔案上傳必做）</h2>
           </div>
           <ChatDemo messages={securityChat} />
           <div className="mt-4">
-            <h3 className="text-sm font-bold mb-3" style={{ color: "#e6edf3" }}>修復 CRITICAL 安全問題：</h3>
+            <h3 className="text-sm font-bold mb-3" style={{ color: "var(--text-primary)" }}>修復 CRITICAL 安全問題：</h3>
             <CodeDiff
               before={beforeSecurity}
               after={afterSecurity}
@@ -249,28 +249,28 @@ export default function FullCyclePage() {
         {/* Step 7: Commit */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(63,185,80,0.15)", color: "#3fb950" }}>步驟 7</span>
-            <h2 className="text-lg font-bold" style={{ color: "#e6edf3" }}>Commit & PR</h2>
+            <span className="text-xs font-bold px-2 py-0.5 rounded" style={{ backgroundColor: "rgba(52,211,153,0.15)", color: "var(--accent-green)" }}>步驟 7</span>
+            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>Commit & PR</h2>
           </div>
-          <p className="text-sm mb-3" style={{ color: "#8b949e" }}>
-            如果設定了 Stop hook，對話結束前會自動跑 <code style={{ color: "#e6edf3" }}>npm run build</code> 最終確認。
+          <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>
+            如果設定了 Stop hook，對話結束前會自動跑 <code style={{ color: "var(--text-primary)" }}>npm run build</code> 最終確認。
           </p>
           <CommandBlock command="git add app/api/avatar app/components/AvatarUpload.tsx && git commit -m 'feat: add avatar upload with Supabase Storage'" description="提交功能（Conventional Commits 格式）" />
         </div>
 
         {/* Summary command chain */}
-        <div className="mb-10 rounded-xl p-5" style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}>
-          <p className="text-sm font-semibold mb-3" style={{ color: "#e6edf3" }}>📋 完整指令鏈（複製備用）</p>
-          <div className="space-y-1 font-mono text-xs" style={{ color: "#8b949e" }}>
+        <div className="mb-10 rounded-xl p-5" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
+          <p className="text-sm font-semibold mb-3" style={{ color: "var(--text-primary)" }}>📋 完整指令鏈（複製備用）</p>
+          <div className="space-y-1 font-mono text-xs" style={{ color: "var(--text-secondary)" }}>
             {[
-              { cmd: "1. /plan [功能描述]", color: "#58a6ff" },
-              { cmd: "2. 確認計畫 → yes", color: "#ffa657" },
-              { cmd: "3. 設定 Hooks（只需一次）", color: "#ffa657" },
-              { cmd: "4. /tdd [核心邏輯]", color: "#3fb950" },
-              { cmd: "5. /tdd [API 端點]", color: "#3fb950" },
-              { cmd: "6. /code-review", color: "#bc8cff" },
-              { cmd: "7. /security-review（敏感功能）", color: "#f85149" },
-              { cmd: "8. git commit", color: "#58a6ff" },
+              { cmd: "1. /plan [功能描述]", color: "var(--accent-blue)" },
+              { cmd: "2. 確認計畫 → yes", color: "var(--accent-orange)" },
+              { cmd: "3. 設定 Hooks（只需一次）", color: "var(--accent-orange)" },
+              { cmd: "4. /tdd [核心邏輯]", color: "var(--accent-green)" },
+              { cmd: "5. /tdd [API 端點]", color: "var(--accent-green)" },
+              { cmd: "6. /code-review", color: "var(--accent-brand)" },
+              { cmd: "7. /security-review（敏感功能）", color: "var(--accent-rose)" },
+              { cmd: "8. git commit", color: "var(--accent-blue)" },
             ].map((item) => (
               <div key={item.cmd} style={{ color: item.color }}>{item.cmd}</div>
             ))}
@@ -278,9 +278,9 @@ export default function FullCyclePage() {
         </div>
 
         {/* Nav */}
-        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #30363d" }}>
-          <Link href="/scenarios/expert/prompt-engineering" className="text-sm hover:underline" style={{ color: "#8b949e" }}>← 提示工程</Link>
-          <Link href="/cheatsheet" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "#ffa657", color: "#0d1117" }}>
+        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+          <Link href="/scenarios/expert/prompt-engineering" className="text-sm hover:underline" style={{ color: "var(--text-secondary)" }}>← 提示工程</Link>
+          <Link href="/cheatsheet" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "var(--accent-orange)", color: "var(--bg-base)" }}>
             速查表 →
           </Link>
         </div>

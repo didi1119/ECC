@@ -56,7 +56,7 @@ export default function TypewriterText({
         <span
           aria-hidden="true"
           className="inline-block w-0.5 h-4 ml-0.5 align-middle animate-pulse"
-          style={{ backgroundColor: "#3fb950" }}
+          style={{ backgroundColor: "var(--accent-green)" }}
         />
       )}
     </span>

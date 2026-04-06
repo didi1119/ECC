@@ -10,23 +10,23 @@ const VARIANTS = {
   warning: {
     icon: "⚠️",
     label: "注意",
-    border: "rgba(255,166,87,0.3)",
-    bg: "rgba(255,166,87,0.06)",
-    titleColor: "#ffa657",
+    border: "rgba(251,191,36,0.3)",
+    bg: "rgba(251,191,36,0.06)",
+    titleColor: "var(--accent-amber)",
   },
   gotcha: {
     icon: "🚨",
     label: "常見陷阱",
-    border: "rgba(248,81,73,0.3)",
-    bg: "rgba(248,81,73,0.06)",
-    titleColor: "#f85149",
+    border: "rgba(244,114,182,0.3)",
+    bg: "rgba(244,114,182,0.06)",
+    titleColor: "var(--accent-rose)",
   },
   tip: {
     icon: "💡",
     label: "小技巧",
-    border: "rgba(63,185,80,0.3)",
-    bg: "rgba(63,185,80,0.06)",
-    titleColor: "#3fb950",
+    border: "rgba(52,211,153,0.3)",
+    bg: "rgba(52,211,153,0.06)",
+    titleColor: "var(--accent-green)",
   },
 };
 
@@ -43,7 +43,7 @@ export default function PitfallBox({ type, title, children }: PitfallBoxProps) {
       <p className="text-sm font-semibold mb-1.5" style={{ color: v.titleColor }}>
         {v.icon} {title}
       </p>
-      <div className="text-sm" style={{ color: "#8b949e" }}>
+      <div className="text-sm" style={{ color: "var(--text-secondary)" }}>
         {children}
       </div>
     </div>

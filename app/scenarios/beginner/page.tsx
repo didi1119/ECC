@@ -10,28 +10,28 @@ const steps = [
     title: "確認 ECC 已安裝",
     description: "打開 Claude Code，輸入 / 看看有沒有出現自訂指令選單",
     command: "/plan",
-    color: "#3fb950",
+    color: "#34d399",
   },
   {
     number: 2,
     title: "用 /plan 規劃你的第一個任務",
     description: "告訴 Claude 你想做什麼，它會幫你規劃步驟，但不會立刻動手寫程式",
     command: "/plan 我想建一個待辦事項清單 App",
-    color: "#58a6ff",
+    color: "#60a5fa",
   },
   {
     number: 3,
     title: "確認計劃後開始實作",
     description: "看完計劃，回覆 yes 讓 Claude 開始執行",
     command: "yes",
-    color: "#bc8cff",
+    color: "#7c6aef",
   },
   {
     number: 4,
     title: "寫完後用 /code-review 審查",
     description: "讓 ECC 的 code-reviewer agent 自動找出潛在問題",
     command: "/code-review",
-    color: "#ffa657",
+    color: "#fb923c",
   },
 ];
 
@@ -112,36 +112,36 @@ try {
 
 export default function BeginnerPage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0d1117" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
       <Navbar />
 
       <div className="max-w-3xl mx-auto px-6 py-12">
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
-            <Link href="/" className="text-xs hover:underline" style={{ color: "#8b949e" }}>首頁</Link>
-            <span style={{ color: "#6e7681" }}>/</span>
-            <span className="text-xs" style={{ color: "#3fb950" }}>新手入門</span>
+            <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
+            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <span className="text-xs" style={{ color: "var(--accent-green)" }}>新手入門</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
             <span className="text-4xl">🌱</span>
             <div>
-              <h1 className="text-3xl font-bold" style={{ color: "#e6edf3" }}>新手入門</h1>
-              <p style={{ color: "#3fb950" }}>第一天使用 ECC</p>
+              <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>新手入門</h1>
+              <p style={{ color: "var(--accent-green)" }}>第一天使用 ECC</p>
             </div>
           </div>
 
           <div
             className="rounded-xl p-5"
-            style={{ backgroundColor: "rgba(63,185,80,0.06)", border: "1px solid rgba(63,185,80,0.2)" }}
+            style={{ backgroundColor: "rgba(52,211,153,0.06)", border: "1px solid rgba(52,211,153,0.2)" }}
           >
-            <p className="text-sm font-semibold mb-1" style={{ color: "#3fb950" }}>📖 情境故事</p>
-            <p style={{ color: "#8b949e" }}>
+            <p className="text-sm font-semibold mb-1" style={{ color: "var(--accent-green)" }}>📖 情境故事</p>
+            <p style={{ color: "var(--text-secondary)" }}>
               小明剛安裝好 ECC，打開 Claude Code 卻不知道要怎麼用。
-              他試著打 <code style={{ color: "#58a6ff" }}>/plan</code>，
+              他試著打 <code style={{ color: "var(--accent-blue)" }}>/plan</code>，
               發現 Claude 會先幫他規劃好步驟，等他確認後才開始動手。
-              寫完程式後再用 <code style={{ color: "#58a6ff" }}>/code-review</code>，
+              寫完程式後再用 <code style={{ color: "var(--accent-blue)" }}>/code-review</code>，
               Claude 自動找出三個問題，十分鐘內全部修好了。
             </p>
           </div>
@@ -149,7 +149,7 @@ export default function BeginnerPage() {
 
         {/* What you'll learn */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🎯 本章節學習重點</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🎯 本章節學習重點</h2>
           <div className="grid grid-cols-2 gap-3">
             {[
               { icon: "📋", title: "/plan 指令", desc: "先規劃，後執行" },
@@ -160,11 +160,11 @@ export default function BeginnerPage() {
               <div
                 key={item.title}
                 className="p-4 rounded-lg"
-                style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}
+                style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}
               >
                 <div className="text-xl mb-1">{item.icon}</div>
-                <div className="font-semibold text-sm" style={{ color: "#e6edf3" }}>{item.title}</div>
-                <div className="text-xs" style={{ color: "#8b949e" }}>{item.desc}</div>
+                <div className="font-semibold text-sm" style={{ color: "var(--text-primary)" }}>{item.title}</div>
+                <div className="text-xs" style={{ color: "var(--text-secondary)" }}>{item.desc}</div>
               </div>
             ))}
           </div>
@@ -172,56 +172,56 @@ export default function BeginnerPage() {
 
         {/* Step Flow */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-6" style={{ color: "#e6edf3" }}>📚 操作步驟</h2>
+          <h2 className="text-lg font-bold mb-6" style={{ color: "var(--text-primary)" }}>📚 操作步驟</h2>
           <StepFlow steps={steps} />
         </div>
 
         {/* Demo: /plan */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>💬 實際對話示範：/plan</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>
-            輸入 <code style={{ color: "#58a6ff" }}>/plan</code> 後，描述你想做什麼，Claude 會列出完整計劃等你確認
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 實際對話示範：/plan</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
+            輸入 <code style={{ color: "var(--accent-blue)" }}>/plan</code> 後，描述你想做什麼，Claude 會列出完整計劃等你確認
           </p>
           <ChatDemo messages={chatMessages} title="情境示範 — /plan 規劃功能" />
         </div>
 
         {/* Demo: /code-review */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>💬 實際對話示範：/code-review</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>
-            寫完程式後輸入 <code style={{ color: "#58a6ff" }}>/code-review</code>，自動找問題
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 實際對話示範：/code-review</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
+            寫完程式後輸入 <code style={{ color: "var(--accent-blue)" }}>/code-review</code>，自動找問題
           </p>
           <ChatDemo messages={codeReviewMessages} title="情境示範 — /code-review 審查程式碼" />
         </div>
 
         {/* Tips */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>💡 新手必知技巧</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>💡 新手必知技巧</h2>
           <div className="space-y-3">
             {[
               {
                 tip: "/plan 的核心價值：它不會立刻動手寫程式",
                 detail: "很多人一開始誤以為 /plan 就是要讓 Claude 開始寫，其實它會先列出計劃等你確認，避免方向跑偏。",
-                color: "#3fb950",
+                color: "var(--accent-green)",
               },
               {
                 tip: "回覆 modify: xxx 可以調整計劃",
                 detail: '不用重新說一遍需求，直接說「modify: 改用 Vue 而不是 React」，Claude 會更新計劃。',
-                color: "#58a6ff",
+                color: "var(--accent-blue)",
               },
               {
                 tip: "/code-review 每次完成功能後都要跑",
                 detail: "養成好習慣，寫完一個功能就 /code-review，比等 PR 被打回來再改省事多了。",
-                color: "#bc8cff",
+                color: "var(--accent-brand)",
               },
             ].map((item) => (
               <div
                 key={item.tip}
                 className="p-4 rounded-lg"
-                style={{ backgroundColor: "#161b22", border: `1px solid ${item.color}30` }}
+                style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}
               >
                 <p className="font-semibold text-sm mb-1" style={{ color: item.color }}>✓ {item.tip}</p>
-                <p className="text-sm" style={{ color: "#8b949e" }}>{item.detail}</p>
+                <p className="text-sm" style={{ color: "var(--text-secondary)" }}>{item.detail}</p>
               </div>
             ))}
           </div>
@@ -229,7 +229,7 @@ export default function BeginnerPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🚀 現在就試試看</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 現在就試試看</h2>
           <div className="space-y-3">
             <CommandBlock
               command="/plan 我想建一個簡單的計算機 App"
@@ -243,14 +243,14 @@ export default function BeginnerPage() {
         </div>
 
         {/* Navigation */}
-        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #30363d" }}>
-          <Link href="/" className="text-sm hover:underline" style={{ color: "#8b949e" }}>
+        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+          <Link href="/" className="text-sm hover:underline" style={{ color: "var(--text-secondary)" }}>
             ← 回首頁
           </Link>
           <Link
             href="/scenarios/feature-dev"
-            className="px-4 py-2 rounded-lg text-sm font-medium transition-all hover:opacity-90"
-            style={{ backgroundColor: "#58a6ff", color: "#0d1117" }}
+            className="nav-cta-btn px-4 py-2 rounded-lg text-sm font-medium transition-all"
+            style={{ backgroundColor: "var(--accent-blue)", color: "var(--bg-base)" }}
           >
             下一章：功能開發 →
           </Link>

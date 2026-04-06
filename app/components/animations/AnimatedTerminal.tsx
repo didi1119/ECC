@@ -15,19 +15,19 @@ interface AnimatedTerminalProps {
 }
 
 const lineColor: Record<TerminalLine["type"], string> = {
-  input: "#58a6ff",
-  output: "#8b949e",
-  success: "#3fb950",
-  error: "#f85149",
-  info: "#bc8cff",
+  input: "var(--accent-blue)",
+  output: "var(--text-secondary)",
+  success: "var(--accent-green)",
+  error: "var(--accent-rose)",
+  info: "var(--accent-brand)",
 };
 
 const linePrefix: Record<TerminalLine["type"], string> = {
-  input: "❯ ",
+  input: "> ",
   output: "  ",
-  success: "✓ ",
-  error: "✗ ",
-  info: "→ ",
+  success: "ok ",
+  error: "!! ",
+  info: "-> ",
 };
 
 export default function AnimatedTerminal({
@@ -41,11 +41,8 @@ export default function AnimatedTerminal({
   const timeoutsRef = useRef<ReturnType<typeof setTimeout>[]>([]);
 
   useEffect(() => {
-    // Eagerly cancel any in-flight timeouts from the previous run before scheduling new ones.
-    // This closes the gap where loop reset and old callbacks could co-exist.
     timeoutsRef.current.forEach(clearTimeout);
     timeoutsRef.current = [];
-    // Intentional synchronous reset — clears stale visible lines before scheduling new ones.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setVisibleCount(0);
 
@@ -72,20 +69,22 @@ export default function AnimatedTerminal({
   return (
     <div
       className="rounded-xl overflow-hidden font-mono text-sm"
-      style={{ backgroundColor: "#0d1117", border: "1px solid #30363d" }}
+      style={{ backgroundColor: "var(--bg-base)", border: "1px solid var(--border-subtle)" }}
     >
       {/* Title bar */}
       <div
         className="flex items-center gap-2 px-4 py-2.5"
-        style={{ backgroundColor: "#161b22", borderBottom: "1px solid #30363d" }}
+        style={{ backgroundColor: "var(--bg-surface-1)", borderBottom: "1px solid var(--border-subtle)" }}
       >
-        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#f85149" }} />
-        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#ffa657" }} />
-        <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#3fb950" }} />
-        <span className="ml-2 text-xs" style={{ color: "#8b949e" }}>{title}</span>
+        <span
+          className="text-[11px] font-mono uppercase tracking-wider"
+          style={{ color: "var(--text-tertiary)" }}
+        >
+          {title}
+        </span>
       </div>
 
-      {/* Lines — aria-live announces new lines as they appear */}
+      {/* Lines */}
       <div
         className="p-4 space-y-1.5 min-h-[120px]"
         aria-live="polite"
@@ -109,7 +108,7 @@ export default function AnimatedTerminal({
           <span
             aria-hidden="true"
             className="inline-block w-2 h-4 animate-pulse"
-            style={{ backgroundColor: "#3fb950" }}
+            style={{ backgroundColor: "var(--accent-green)" }}
           />
         )}
       </div>

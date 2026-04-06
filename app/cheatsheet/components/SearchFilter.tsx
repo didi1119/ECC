@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useRef } from "react";
 import type { CommandData, CommandCategory } from "../data/types";
 import { CATEGORIES } from "../data/types";
 import CommandCard from "./CommandCard";
@@ -12,6 +12,19 @@ interface SearchFilterProps {
 export default function SearchFilter({ commands }: SearchFilterProps) {
   const [query, setQuery] = useState("");
   const [activeCategory, setActiveCategory] = useState<CommandCategory | "all">("all");
+  const searchInputRef = useRef<HTMLInputElement>(null);
+
+  // Ctrl+K / Cmd+K keyboard shortcut to focus search
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.ctrlKey || e.metaKey) && e.key === "k") {
+        e.preventDefault();
+        searchInputRef.current?.focus();
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
 
   const filtered = useMemo(() => {
     return commands.filter((cmd) => {
@@ -52,6 +65,7 @@ export default function SearchFilter({ commands }: SearchFilterProps) {
           🔍
         </span>
         <input
+          ref={searchInputRef}
           type="search"
           placeholder="搜尋指令，例如：測試、安全、部署..."
           value={query}

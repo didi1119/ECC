@@ -202,7 +202,7 @@ export default function Home() {
           <div className="flex flex-wrap items-center justify-center gap-3 mb-14">
             <Link
               href="/scenarios/beginner"
-              className="px-6 py-3 rounded-lg font-semibold text-sm transition-all"
+              className="nav-cta-btn px-6 py-3 rounded-lg font-semibold text-sm transition-all"
               style={{
                 backgroundColor: "var(--accent-brand)",
                 color: "#fff",
@@ -212,7 +212,7 @@ export default function Home() {
             </Link>
             <Link
               href="/cheatsheet"
-              className="px-6 py-3 rounded-lg font-medium text-sm transition-all"
+              className="nav-link px-6 py-3 rounded-lg font-medium text-sm transition-all"
               style={{
                 backgroundColor: "var(--bg-surface-1)",
                 border: "1px solid var(--border-medium)",

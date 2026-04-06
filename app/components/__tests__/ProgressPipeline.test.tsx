@@ -60,7 +60,7 @@ describe("ProgressPipeline", () => {
       await vi.runAllTimersAsync();
     });
     // After all timers, first stage should be done
-    expect(screen.getAllByText("✓ 完成").length).toBeGreaterThan(0);
+    expect(screen.getAllByText("ok 完成").length).toBeGreaterThan(0);
   });
 
   it("calls onComplete after all stages finish", async () => {

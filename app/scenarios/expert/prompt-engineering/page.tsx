@@ -89,16 +89,16 @@ const iterateChat = [
 
 export default function PromptEngineeringPage() {
   return (
-    <div style={{ minHeight: "100vh", backgroundColor: "#0d1117" }}>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
       <Navbar />
       <div className="max-w-3xl mx-auto px-6 py-12">
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
-          <Link href="/" className="text-xs hover:underline" style={{ color: "#8b949e" }}>首頁</Link>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#f85149" }}>高手情境</span>
-          <span style={{ color: "#6e7681" }}>/</span>
-          <span className="text-xs" style={{ color: "#ffa657" }}>提示工程</span>
+          <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
+          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <span className="text-xs" style={{ color: "var(--accent-orange)" }}>提示工程</span>
         </div>
 
         {/* Header */}
@@ -107,38 +107,38 @@ export default function PromptEngineeringPage() {
             <span className="text-4xl">✍️</span>
             <div>
               <div className="flex items-center gap-2 mb-1">
-                <h1 className="text-3xl font-bold" style={{ color: "#e6edf3" }}>高效 /plan 提示工程</h1>
-                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(248,81,73,0.15)", color: "#f85149", border: "1px solid rgba(248,81,73,0.3)" }}>高手</span>
+                <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>高效 /plan 提示工程</h1>
+                <span className="text-xs px-2 py-0.5 rounded-full font-bold" style={{ backgroundColor: "rgba(244,114,182,0.15)", color: "var(--accent-rose)", border: "1px solid rgba(244,114,182,0.3)" }}>高手</span>
               </div>
-              <p style={{ color: "#ffa657" }}>寫出讓 Claude 產出可執行計畫的提示詞</p>
+              <p style={{ color: "var(--accent-orange)" }}>寫出讓 Claude 產出可執行計畫的提示詞</p>
             </div>
           </div>
         </div>
 
         {/* Why it matters */}
-        <div className="mb-10 rounded-xl p-5" style={{ backgroundColor: "rgba(255,166,87,0.06)", border: "1px solid rgba(255,166,87,0.2)" }}>
-          <p className="text-sm font-semibold mb-2" style={{ color: "#ffa657" }}>💡 為什麼提示詞品質這麼重要？</p>
-          <p className="text-sm" style={{ color: "#8b949e" }}>
-            模糊的 <code style={{ color: "#e6edf3" }}>/plan</code> 會產出「做一個登入系統」這種沒有具體步驟的計畫，浪費大量 context window。
+        <div className="mb-10 rounded-xl p-5" style={{ backgroundColor: "rgba(251,191,36,0.06)", border: "1px solid rgba(251,191,36,0.2)" }}>
+          <p className="text-sm font-semibold mb-2" style={{ color: "var(--accent-orange)" }}>💡 為什麼提示詞品質這麼重要？</p>
+          <p className="text-sm" style={{ color: "var(--text-secondary)" }}>
+            模糊的 <code style={{ color: "var(--text-primary)" }}>/plan</code> 會產出「做一個登入系統」這種沒有具體步驟的計畫，浪費大量 context window。
             好的提示詞可以讓 Claude 在第一次就產出可直接執行的分段計畫。
           </p>
         </div>
 
         {/* Prompt Anatomy */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🔬 有效 /plan 提示的四個要素</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔬 有效 /plan 提示的四個要素</h2>
           <div className="space-y-3">
             {[
-              { icon: "📍", label: "背景（Context）", desc: "現有的技術棧、已完成的部分、不能動的地方", color: "#58a6ff" },
-              { icon: "🎯", label: "需求（Requirements）", desc: "具體的功能點，越精確越好", color: "#3fb950" },
-              { icon: "🚫", label: "非目標（Non-goals）", desc: "明確說「這次不做」，防止範疇蔓延", color: "#f85149" },
-              { icon: "📦", label: "產出格式（Output format）", desc: "要求列出受影響的檔案路徑、風險等級、可獨立 merge 的 phase", color: "#bc8cff" },
+              { icon: "📍", label: "背景（Context）", desc: "現有的技術棧、已完成的部分、不能動的地方", color: "var(--accent-blue)" },
+              { icon: "🎯", label: "需求（Requirements）", desc: "具體的功能點，越精確越好", color: "var(--accent-green)" },
+              { icon: "🚫", label: "非目標（Non-goals）", desc: "明確說「這次不做」，防止範疇蔓延", color: "var(--accent-rose)" },
+              { icon: "📦", label: "產出格式（Output format）", desc: "要求列出受影響的檔案路徑、風險等級、可獨立 merge 的 phase", color: "var(--accent-brand)" },
             ].map((item) => (
-              <div key={item.label} className="flex gap-3 p-3 rounded-lg" style={{ backgroundColor: "#161b22", border: "1px solid #30363d" }}>
+              <div key={item.label} className="flex gap-3 p-3 rounded-lg" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
                 <span className="text-2xl">{item.icon}</span>
                 <div>
                   <div className="text-sm font-semibold mb-0.5" style={{ color: item.color }}>{item.label}</div>
-                  <div className="text-xs" style={{ color: "#8b949e" }}>{item.desc}</div>
+                  <div className="text-xs" style={{ color: "var(--text-secondary)" }}>{item.desc}</div>
                 </div>
               </div>
             ))}
@@ -147,7 +147,7 @@ export default function PromptEngineeringPage() {
 
         {/* Prompt Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>📝 提示詞對比</h2>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📝 提示詞對比</h2>
           <CodeDiff
             before={badPlan}
             after={goodPlan}
@@ -159,7 +159,7 @@ export default function PromptEngineeringPage() {
 
         {/* Output Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>📊 計畫產出品質對比</h2>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📊 計畫產出品質對比</h2>
           <CodeDiff
             before={badOutput}
             after={goodOutput}
@@ -176,8 +176,8 @@ export default function PromptEngineeringPage() {
 
         {/* Iterating on plan */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "#e6edf3" }}>🔄 如何迭代計畫</h2>
-          <p className="text-sm mb-4" style={{ color: "#8b949e" }}>
+          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🔄 如何迭代計畫</h2>
+          <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             計畫不滿意時直接在對話框說「調整」，不需要重新 /plan：
           </p>
           <ChatDemo messages={iterateChat} />
@@ -193,7 +193,7 @@ export default function PromptEngineeringPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "#e6edf3" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command={badPlan} description="❌ 不要這樣寫" />
             <CommandBlock command={goodPlan} description="✅ 套用這個範本，改成你的功能" />
@@ -205,9 +205,9 @@ export default function PromptEngineeringPage() {
         </div>
 
         {/* Nav */}
-        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid #30363d" }}>
-          <Link href="/scenarios/expert/tdd-mastery" className="text-sm hover:underline" style={{ color: "#8b949e" }}>← TDD 實戰</Link>
-          <Link href="/scenarios/expert/full-cycle" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "#3fb950", color: "#0d1117" }}>
+        <div className="flex items-center justify-between pt-6" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+          <Link href="/scenarios/expert/tdd-mastery" className="text-sm hover:underline" style={{ color: "var(--text-secondary)" }}>← TDD 實戰</Link>
+          <Link href="/scenarios/expert/full-cycle" className="px-4 py-2 rounded-lg text-sm font-medium hover:opacity-90" style={{ backgroundColor: "var(--accent-green)", color: "var(--bg-base)" }}>
             下一個：完整全流程 →
           </Link>
         </div>
