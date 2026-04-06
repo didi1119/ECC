@@ -5,13 +5,13 @@ import { SKILLS_BY_SLUG } from "../data";
 
 // Workflow-specific annotations only — color/emoji/invocation derived from skill data
 const WORKFLOW_META = [
-  { number: 1, slug: "brainstorming",                   title: "Brainstorming",       trigger: "開始任何新功能時",    output: "docs/superpowers/specs/YYYY-MM-DD-<topic>-design.md",       description: "每個功能從設計開始，而非從代碼開始。AI 透過一次一個問題的方式澄清需求，提出 2-3 種方案，並產出設計文件。你的批准是進入下一步的門票。" },
-  { number: 2, slug: "using-git-worktrees",             title: "Git Worktrees",        trigger: "設計批准後",          output: ".worktrees/<feature-name>/ 上的新分支",                       description: "設計批准後，為功能建立隔離的 git worktree。這讓你可以同時在多個功能上工作，而不會互相污染。基準測試必須通過才能繼續。" },
-  { number: 3, slug: "writing-plans",                   title: "Writing Plans",        trigger: "建立 worktree 後",    output: "docs/superpowers/plans/YYYY-MM-DD-<feature-name>.md",         description: "把設計文件拆解成 2-5 分鐘的 TDD 任務。每個任務都有完整的代碼片段、確切的檔案路徑和測試指令。計畫存到 docs/superpowers/plans/。" },
-  { number: 4, slug: "subagent-driven-development",     title: "Subagent Dev",         trigger: "計畫已就緒時",        output: "每個任務的 commit",                                            description: "每個任務派發一個全新的子代理來實作。每個任務完成後，依序通過規格合規和代碼品質兩個審查階段。兩者都通過才算完成。" },
-  { number: 5, slug: "test-driven-development",         title: "TDD",                  trigger: "每個任務的實作階段",  output: "通過測試的代碼 + commit",                                      description: "每個子代理在實作時都遵循 RED-GREEN-REFACTOR 循環。先寫失敗測試，確認它真的失敗，再寫最少的代碼讓它通過，最後重構。" },
-  { number: 6, slug: "requesting-code-review",          title: "Code Review",          trigger: "每個任務完成後",      output: "審查報告 + 修復",                                              description: "任務完成後對照規格書自我審查，然後由代碼品質審查員審查。Critical 問題必須修復才能繼續。這個步驟防止問題累積。" },
-  { number: 7, slug: "finishing-a-development-branch",  title: "Finish Branch",        trigger: "所有任務完成後",      output: "合併的代碼或 Pull Request",                                    description: "所有任務完成後，執行完整測試套件，然後選擇：本地合併、建立 PR、保留或捨棄。worktree 在選項 1/2/4 後自動清除。" },
+  { number: 1, slug: "brainstorming",                   title: "Brainstorming",  trigger: "開始任何新功能時",    description: "每個功能從設計開始，而非從代碼開始。AI 透過一次一個問題的方式澄清需求，提出 2-3 種方案，並產出設計文件。你的批准是進入下一步的門票。" },
+  { number: 2, slug: "using-git-worktrees",             title: "Git Worktrees",  trigger: "設計批准後",          description: "設計批准後，為功能建立隔離的 git worktree。這讓你可以同時在多個功能上工作，而不會互相污染。基準測試必須通過才能繼續。" },
+  { number: 3, slug: "writing-plans",                   title: "Writing Plans",  trigger: "建立 worktree 後",    description: "把設計文件拆解成 2-5 分鐘的 TDD 任務。每個任務都有完整的代碼片段、確切的檔案路徑和測試指令。計畫存到 docs/superpowers/plans/。" },
+  { number: 4, slug: "subagent-driven-development",     title: "Subagent Dev",   trigger: "計畫已就緒時",        description: "每個任務派發一個全新的子代理來實作。每個任務完成後，依序通過規格合規和代碼品質兩個審查階段。兩者都通過才算完成。" },
+  { number: 5, slug: "test-driven-development",         title: "TDD",            trigger: "每個任務的實作階段",  description: "每個子代理在實作時都遵循 RED-GREEN-REFACTOR 循環。先寫失敗測試，確認它真的失敗，再寫最少的代碼讓它通過，最後重構。" },
+  { number: 6, slug: "requesting-code-review",          title: "Code Review",    trigger: "每個任務完成後",      description: "任務完成後對照規格書自我審查，然後由代碼品質審查員審查。Critical 問題必須修復才能繼續。這個步驟防止問題累積。" },
+  { number: 7, slug: "finishing-a-development-branch",  title: "Finish Branch",  trigger: "所有任務完成後",      description: "所有任務完成後，執行完整測試套件，然後選擇：本地合併、建立 PR、保留或捨棄。worktree 在選項 1/2/4 後自動清除。" },
 ] as const;
 
 const WORKFLOW_STEPS = WORKFLOW_META.map((m) => ({

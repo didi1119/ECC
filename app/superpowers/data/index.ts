@@ -16,7 +16,7 @@ import {
 } from "./skills-debugging";
 import { writingSkills, usingSuperpowers } from "./skills-meta";
 
-export type { SkillData, SkillPhase, PhaseInfo, SkillStep, SkillChatMessage } from "./types";
+export type { SkillData, SkillPhase, PhaseInfo } from "./types";
 export { PHASES } from "./types";
 
 export const ALL_SKILLS = [

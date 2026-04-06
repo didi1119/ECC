@@ -1,41 +1,7 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import SkillCard from "../SkillCard";
-import type { SkillData } from "../../data/types";
-
-// Mock next/link
-vi.mock("next/link", () => ({
-  default: ({
-    href,
-    children,
-    ...props
-  }: {
-    href: string;
-    children: React.ReactNode;
-    [key: string]: unknown;
-  }) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  ),
-}));
-
-const makeSkill = (overrides: Partial<SkillData> = {}): SkillData => ({
-  slug: "brainstorming",
-  name: "superpowers:brainstorming",
-  displayName: "Brainstorming",
-  phase: "planning",
-  color: "#60a5fa",
-  emoji: "💡",
-  shortDesc: "透過對話精煉設計",
-  whatItDoes: "詳細說明",
-  whenToUse: ["開始新功能前"],
-  steps: [],
-  chatExample: [],
-  keyPrinciples: [],
-  relatedSlugs: [],
-  ...overrides,
-});
+import { makeSkill } from "./fixtures";
 
 describe("SkillCard", () => {
   it("renders the skill name", () => {

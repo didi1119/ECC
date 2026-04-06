@@ -1,24 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import PhaseSection from "../PhaseSection";
-import type { PhaseInfo, SkillData } from "../../data/types";
-
-// Mock next/link
-vi.mock("next/link", () => ({
-  default: ({
-    href,
-    children,
-    ...props
-  }: {
-    href: string;
-    children: React.ReactNode;
-    [key: string]: unknown;
-  }) => (
-    <a href={href} {...props}>
-      {children}
-    </a>
-  ),
-}));
+import type { PhaseInfo } from "../../data/types";
+import { makeSkill } from "./fixtures";
 
 const makePhasePlanning: PhaseInfo = {
   id: "planning",
@@ -27,23 +11,6 @@ const makePhasePlanning: PhaseInfo = {
   color: "#60a5fa",
   description: "設計優先，避免浪費",
 };
-
-const makeSkill = (overrides: Partial<SkillData> = {}): SkillData => ({
-  slug: "brainstorming",
-  name: "superpowers:brainstorming",
-  displayName: "Brainstorming",
-  phase: "planning",
-  color: "#60a5fa",
-  emoji: "💡",
-  shortDesc: "透過對話精煉設計",
-  whatItDoes: "詳細說明",
-  whenToUse: [],
-  steps: [],
-  chatExample: [],
-  keyPrinciples: [],
-  relatedSlugs: [],
-  ...overrides,
-});
 
 describe("PhaseSection", () => {
   it("renders the phase label", () => {

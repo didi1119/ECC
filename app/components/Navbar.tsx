@@ -33,7 +33,6 @@ export default function Navbar() {
   const [mobileSuperpowersOpen, setMobileSuperpowersOpen] = useState(false);
   const expertRef = useRef<HTMLDivElement>(null);
   const superpowersRef = useRef<HTMLDivElement>(null);
-  const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close mobile menu on route change
   useEffect(() => {
@@ -289,7 +288,6 @@ export default function Navbar() {
 
       {/* Mobile menu panel — animated */}
       <div
-        ref={mobileMenuRef}
         className="md:hidden overflow-hidden"
         style={{
           maxHeight: mobileOpen ? "600px" : "0",
