@@ -1,0 +1,1 @@
+self.__SSG_MANIFEST=new Set(["\u002Fcheatsheet\u002Fcommands\u002F[slug]","\u002Fsuperpowers\u002Fskills\u002F[slug]"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()
