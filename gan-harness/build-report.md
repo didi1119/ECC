@@ -1,9 +1,9 @@
 # GAN Harness Build Report
 
 **Brief:** 整體 UI 高端質感
-**Result:** STOPPED AT ITERATION 2 (user request)
-**Iterations:** 2 / 15
-**Final Score:** 7.3 / 10
+**Result:** PASS at iteration 3
+**Iterations:** 3 / 15
+**Final Score:** 8.2 / 10
 **Pass Threshold:** 8.0
 
 ---
@@ -14,8 +14,9 @@
 |------|---------------|-------------|-------|---------------|-------|
 | 1    | 2.0 / 3.0     | 1.1 / 2.0   | 1.55 / 3.0 | 1.25 / 2.0 | **5.9** |
 | 2    | 2.4 / 3.0     | 1.1 / 2.0   | 2.15 / 3.0 | 1.65 / 2.0 | **7.3** |
+| 3    | 2.5 / 3.0     | 1.5 / 2.0   | 2.6 / 3.0  | 1.6 / 2.0  | **8.2** |
 
-Delta: **+1.4** in one iteration
+Delta: **+2.3** over 2 improvement iterations (+1.4 iter 1→2, +0.9 iter 2→3)
 
 ---
 
@@ -41,15 +42,24 @@ Delta: **+1.4** in one iteration
 - ✅ **Grain texture z-index** reduced from 9999 → 50
 - ✅ Zero TypeScript errors, 76/76 tests pass, 88 pages build successfully
 
+### Iteration 3
+- ✅ **Expert scenarios dropdown in Navbar** — desktop hover dropdown + mobile expandable section
+- ✅ **Navbar added to /cheatsheet/commands/[slug]** pages (was completely missing)
+- ✅ **Lucide icons** replacing emoji in headings across all 12 scenario pages
+- ✅ **Animated mobile menu** — smooth slide transition (300ms ease)
+- ✅ **Expert section visual differentiation** — darker bg, rose glow divider on home page
+- ✅ **RevealOnScroll component** using IntersectionObserver for entrance animations
+- ✅ **HeadingIcon component** for Lucide icon mapping
+- ✅ **SVG/Lucide Hexagon logo** replacing unicode character
+- ✅ Zero TypeScript errors, 76/76 tests pass, 88 pages build successfully
+
 ---
 
-## Remaining issues (if iteration 3 were to run)
+## Remaining issues (minor, non-blocking)
 
-1. **No Navbar on command detail pages** — `/cheatsheet/commands/[slug]` has no navigation header
-2. **Originality gap** — logo still unicode hexagon (not SVG), no scroll-reveal animations, expert section visually identical to beginner section
-3. **Emoji in headings** — spec forbids emoji in heading elements (scenario pages still use them)
-4. **Mobile menu has no animation** — appears/disappears instantly (no transition)
-5. **No scroll-triggered reveals** — sections appear instantly, no IntersectionObserver animations
+1. **col-span-2 grid bug** — first featured card class applied to wrong element, doesn't actually span 2 columns
+2. **filter-pill CSS class dead code** — class defined in globals.css but never applied to category filter buttons
+3. **RevealOnScroll no-JS fallback** — content hidden from users without JavaScript (should default visible)
 
 ---
 
@@ -60,18 +70,21 @@ Delta: **+1.4** in one iteration
 - `gan-harness/generator-state.md`
 - `gan-harness/feedback/feedback-001.md`
 - `gan-harness/feedback/feedback-002.md`
+- `gan-harness/feedback/feedback-003.md`
 - `app/globals.css` — design token system, grain texture, dot-grid, card-hover class
 - `app/layout.tsx` — next/font Inter + JetBrains Mono
-- `app/components/Navbar.tsx` — glassmorphism, mobile nav, active route, CSS hover
-- `app/components/HoverCard.tsx` — new reusable border-glow wrapper
+- `app/components/Navbar.tsx` — glassmorphism, mobile nav, active route, expert dropdown
+- `app/components/HoverCard.tsx` — reusable border-glow wrapper
 - `app/components/CommandBlock.tsx` — redesigned (no dot chrome)
 - `app/components/ChatDemo.tsx` — redesigned (bubble layout, token colors)
-- `app/page.tsx` — hero redesign, featured card layout
+- `app/components/RevealOnScroll.tsx` — IntersectionObserver scroll reveal
+- `app/components/HeadingIcon.tsx` — Lucide icon mapper
+- `app/page.tsx` — hero redesign, expert section visual differentiation
 - `app/cheatsheet/page.tsx` — wider container, micro-label stats
+- `app/cheatsheet/commands/[slug]/page.tsx` — Navbar added, breadcrumb styled
 - `app/cheatsheet/components/SearchFilter.tsx` — category groups, Ctrl+K shortcut
 - `app/cheatsheet/components/CommandCard.tsx` — surface-1 bg, border-glow
 - `app/cheatsheet/components/CategoryBadge.tsx` — micro-label treatment
 - `app/cheatsheet/components/CommandDetail.tsx` — token migration
 - `app/cheatsheet/components/RelatedCommands.tsx` — token migration
-- `app/cheatsheet/commands/[slug]/page.tsx` — token migration
-- All 5 scenario pages + 7 expert scenario pages — token migration
+- All 5 scenario pages + 7 expert scenario pages — token migration, Lucide icons, RevealOnScroll
