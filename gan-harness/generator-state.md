@@ -1,39 +1,45 @@
-# Generator State -- Iteration 002
+# Generator State -- Iteration 003
 
 ## What Was Built
-- Complete CSS token migration across all 21+ files (290+ hardcoded hex values replaced)
-- Redesigned CommandBlock component (removed window chrome dots, minimal monospace header, syntax-colored commands)
-- Redesigned ChatDemo component (right-aligned user messages with blue tint, left-aligned Claude with violet tint, styled initials avatars)
-- Redesigned CopyButton, StepFlow, PitfallBox, CodeDiff with CSS custom properties
-- Mobile hamburger navigation menu with slide-down panel
-- Active route indicator in Navbar using usePathname()
-- CSS-based hover states replacing JS event handlers
-- Ctrl+K / Cmd+K keyboard shortcut for cheatsheet search
-- CTA button hover states on home page
+- Expert scenarios dropdown in Navbar (desktop hover + mobile expandable)
+- Navbar added to command detail page (`/cheatsheet/commands/[slug]`)
+- Back navigation styled as prominent button with ArrowLeft icon
+- Breadcrumbs updated to use ChevronRight Lucide icons across all pages
+- Emoji headings replaced with Lucide icons across all 12 scenario pages
+- Page header emoji replaced with Lucide icons (Sprout, Rocket, Search, Zap, Brain, etc.)
+- RevealOnScroll component with IntersectionObserver + reduced-motion support
+- Scroll-reveal animations on home page sections (scenarios, expert, quick commands, install)
+- Expert section visually differentiated: surface-1 background, rose glow, gradient divider
+- Expert cards have gradient border accent via CSS
+- Mobile menu animated with max-height CSS transition (no instant appear/disappear)
+- Mobile hamburger touch target increased to 44px (w-11 h-11)
+- Logo replaced from unicode hexagon to Lucide Hexagon SVG icon
+- Secondary CTA button now uses ghost/outline style (transparent bg + border)
+- Button :active states added
+- Filter pill hover state added via CSS class
+- HeadingIcon reusable component created (maps icon names to Lucide components)
 
 ## What Changed This Iteration
-- Fixed: 291 hardcoded hex color occurrences across 21 files migrated to var(--token) system
-- Fixed: CommandBlock no longer uses red/yellow/green window chrome dots; uses minimal monospace label header
-- Fixed: ChatDemo uses right-aligned user bubbles (blue tint at 12% opacity) and left-aligned Claude bubbles (violet tint at 8% opacity)
-- Fixed: CopyButton uses token variables (green for copied state, surface-1 for default)
-- Fixed: StepFlow uses token variables, continuous vertical line connecting nodes
-- Fixed: PitfallBox uses token accent colors (amber/rose/green) instead of old hex values
-- Fixed: CodeDiff uses token variables for all surfaces, borders, and text
-- Fixed: Mobile navigation now accessible via hamburger menu on screens < md
-- Fixed: Navbar hover uses CSS classes (.nav-link:hover) instead of JS onMouseEnter/onMouseLeave
-- Fixed: Active route shown with bottom border + background highlight in nav
-- Fixed: Ctrl+K shortcut focuses search input in cheatsheet (useEffect with keydown listener)
-- Fixed: CTA buttons on home page have hover states (nav-cta-btn with brightness filter, nav-link with bg change)
-- Fixed: Grain texture z-index reduced from 9999 to 50
-- Fixed: All animation components (AnimatedTerminal, ParallelAgentViz, ProgressPipeline) migrated to tokens
-- Fixed: All 5 main scenario pages migrated to token system
-- Fixed: All 7 expert scenario pages migrated to token system
-- Fixed: CommandDetail, RelatedCommands, and [slug]/page.tsx Tailwind opacity utilities replaced
-- Fixed: Animation components removed window chrome dots, use token variables throughout
+- Fixed: Command detail page missing Navbar (navigation dead-end)
+- Fixed: Expert scenarios not accessible from nav (added dropdown)
+- Fixed: Emoji in headings violating spec anti-slop directive (replaced with Lucide)
+- Fixed: Mobile menu no animation (added max-height transition)
+- Fixed: Breadcrumbs using "/" text (replaced with ChevronRight icons)
+- Fixed: Logo using unicode character (replaced with Lucide Hexagon SVG)
+- Fixed: Mobile hamburger touch target below 44px minimum
+- Improved: Expert section visual differentiation (darker bg, rose glow, gradient borders)
+- Improved: Secondary CTA now ghost style (distinct from primary)
+- Added: RevealOnScroll component for scroll-triggered entrance animations
+- Added: Expert card CSS gradient border accent
+- Added: Button :active pressed state
+- Added: Filter pill hover feedback
 
 ## Known Issues
-- Data files (commands-*.ts, types.ts) still use hex colors for category/command color values -- these are data properties used in dynamic inline styles via style={{ color: cmd.color }}, not hardcoded UI colors
-- Test data files use hex colors for test fixture data (expected behavior)
+- Search is still a plain input, not a command-palette modal overlay
+- No typing indicator in ChatDemo
+- Sticky category headers lack backdrop blur
+- CommandDetail inline chat still uses emoji avatars (vs ChatDemo styled initials)
+- No search focus glow animation
 
 ## Dev Server
 - URL: http://localhost:3000
@@ -43,4 +49,4 @@
 ## Verification
 - npx tsc --noEmit: zero errors
 - npm test -- --run: 76/76 tests pass (11 test files)
-- npm run build: successful (88 pages prerendered)
+- npm run build: successful

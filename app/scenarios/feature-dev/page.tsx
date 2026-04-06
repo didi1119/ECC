@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { RefreshCw, BookOpen, MessageSquare, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import CommandBlock from "../../components/CommandBlock";
 import ChatDemo from "../../components/ChatDemo";
@@ -31,11 +32,11 @@ export default function FeatureDevPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-blue)" }}>功能開發</span>
           </div>
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🚀</span>
+            <Rocket size={36} style={{ color: "var(--accent-blue)" }} />
             <div>
               <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>功能開發</h1>
               <p style={{ color: "var(--accent-blue)" }}>從需求到上線</p>
@@ -53,7 +54,7 @@ export default function FeatureDevPage() {
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔄 什麼是 TDD？</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><RefreshCw size={20} style={{ color: "var(--accent-green)" }} /> 什麼是 TDD？</h2>
           <div className="grid grid-cols-3 gap-3">
             {[
               { phase: "🔴 RED", title: "先寫測試", desc: "測試會 FAIL，因為還沒實作", color: "var(--accent-rose)" },
@@ -73,18 +74,18 @@ export default function FeatureDevPage() {
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-6" style={{ color: "var(--text-primary)" }}>📚 完整開發流程</h2>
+          <h2 className="text-lg font-bold mb-6 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><BookOpen size={20} style={{ color: "var(--accent-blue)" }} /> 完整開發流程</h2>
           <StepFlow steps={steps} />
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 /tdd 實際示範</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-brand)" }} /> /tdd 實際示範</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>ECC 的 tdd-guide agent 會引導你完整走過 RED → GREEN → IMPROVE</p>
           <ChatDemo messages={tddMessages} title="情境示範 — /tdd 購物車功能" />
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 /build-fix 自動修錯</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-orange)" }} /> /build-fix 自動修錯</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             遇到建置錯誤不用自己看錯誤訊息，<code style={{ color: "var(--accent-orange)" }}>/build-fix</code> 幫你分析並自動修復
           </p>
@@ -92,7 +93,7 @@ export default function FeatureDevPage() {
         </div>
 
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 現在就試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-blue)" }} /> 現在就試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="/plan 我想新增使用者登入功能" description="規劃新功能" />
             <CommandBlock command="/tdd 實作 JWT 驗證邏輯" description="TDD 開發" />

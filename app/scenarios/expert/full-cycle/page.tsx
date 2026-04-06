@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { Rocket, Map, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import CodeDiff from "../../../components/CodeDiff";
@@ -122,16 +123,16 @@ export default function FullCyclePage() {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
           <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-orange)" }}>完整功能開發全流程</span>
         </div>
 
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🚀</span>
+            <Rocket size={36} style={{ color: "var(--accent-orange)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>完整功能開發全流程</h1>
@@ -150,7 +151,7 @@ export default function FullCyclePage() {
 
         {/* Full pipeline overview */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🗺️ 七步驟全流程</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Map size={20} style={{ color: "var(--accent-blue)" }} /> 七步驟全流程</h2>
           <StepFlow steps={cycleSteps} />
         </div>
 

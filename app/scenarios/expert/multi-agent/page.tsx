@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { Users, Clapperboard, Settings, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import ParallelAgentViz, { AgentTask } from "../../../components/animations/ParallelAgentViz";
@@ -43,14 +44,14 @@ export default function MultiAgentPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-blue)" }}>多 Agent 協作</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🤝</span>
+            <Users size={36} style={{ color: "var(--accent-blue)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>多 Agent 即時協作</h1>
@@ -102,7 +103,7 @@ export default function MultiAgentPage() {
         {/* Live visualization */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>🎬 多 Agent 即時協作視覺化</h2>
+            <h2 className="text-lg font-bold flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Clapperboard size={20} style={{ color: "var(--accent-brand)" }} /> 多 Agent 即時協作視覺化</h2>
             <button
               onClick={() => setKey((k: number) => k + 1)}
               className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
@@ -120,7 +121,7 @@ export default function MultiAgentPage() {
 
         {/* How it works */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⚙️ 運作原理</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Settings size={20} style={{ color: "var(--accent-orange)" }} /> 運作原理</h2>
           <div className="space-y-3">
             {[
               {
@@ -170,7 +171,7 @@ export default function MultiAgentPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-green)" }} /> 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="/multi-plan 重構整個電商平台的前後端" description="啟動多 Agent 並行計劃" />
             <CommandBlock command="/multi-execute 前端測試 後端測試 e2e測試" description="同時執行多個獨立任務" />

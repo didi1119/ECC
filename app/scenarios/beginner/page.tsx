@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Target, BookOpen, MessageSquare, Lightbulb, Rocket, Sprout, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import CommandBlock from "../../components/CommandBlock";
 import ChatDemo from "../../components/ChatDemo";
@@ -120,12 +121,12 @@ export default function BeginnerPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-green)" }}>新手入門</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🌱</span>
+            <Sprout size={36} style={{ color: "var(--accent-green)" }} />
             <div>
               <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>新手入門</h1>
               <p style={{ color: "var(--accent-green)" }}>第一天使用 ECC</p>
@@ -149,7 +150,7 @@ export default function BeginnerPage() {
 
         {/* What you'll learn */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🎯 本章節學習重點</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Target size={20} style={{ color: "var(--accent-green)" }} /> 本章節學習重點</h2>
           <div className="grid grid-cols-2 gap-3">
             {[
               { icon: "📋", title: "/plan 指令", desc: "先規劃，後執行" },
@@ -172,13 +173,13 @@ export default function BeginnerPage() {
 
         {/* Step Flow */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-6" style={{ color: "var(--text-primary)" }}>📚 操作步驟</h2>
+          <h2 className="text-lg font-bold mb-6 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><BookOpen size={20} style={{ color: "var(--accent-blue)" }} /> 操作步驟</h2>
           <StepFlow steps={steps} />
         </div>
 
         {/* Demo: /plan */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 實際對話示範：/plan</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-brand)" }} /> 實際對話示範：/plan</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             輸入 <code style={{ color: "var(--accent-blue)" }}>/plan</code> 後，描述你想做什麼，Claude 會列出完整計劃等你確認
           </p>
@@ -187,7 +188,7 @@ export default function BeginnerPage() {
 
         {/* Demo: /code-review */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 實際對話示範：/code-review</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-brand)" }} /> 實際對話示範：/code-review</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             寫完程式後輸入 <code style={{ color: "var(--accent-blue)" }}>/code-review</code>，自動找問題
           </p>
@@ -196,7 +197,7 @@ export default function BeginnerPage() {
 
         {/* Tips */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>💡 新手必知技巧</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Lightbulb size={20} style={{ color: "var(--accent-amber)" }} /> 新手必知技巧</h2>
           <div className="space-y-3">
             {[
               {
@@ -229,7 +230,7 @@ export default function BeginnerPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 現在就試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-blue)" }} /> 現在就試試看</h2>
           <div className="space-y-3">
             <CommandBlock
               command="/plan 我想建一個簡單的計算機 App"

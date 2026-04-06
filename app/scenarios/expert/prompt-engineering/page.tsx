@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { PenTool, Microscope, FileText, BarChart3, RefreshCw, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import CodeDiff from "../../../components/CodeDiff";
@@ -95,16 +96,16 @@ export default function PromptEngineeringPage() {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
           <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-orange)" }}>提示工程</span>
         </div>
 
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">✍️</span>
+            <PenTool size={36} style={{ color: "var(--accent-brand)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>高效 /plan 提示工程</h1>
@@ -126,7 +127,7 @@ export default function PromptEngineeringPage() {
 
         {/* Prompt Anatomy */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔬 有效 /plan 提示的四個要素</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Microscope size={20} style={{ color: "var(--accent-brand)" }} /> 有效 /plan 提示的四個要素</h2>
           <div className="space-y-3">
             {[
               { icon: "📍", label: "背景（Context）", desc: "現有的技術棧、已完成的部分、不能動的地方", color: "var(--accent-blue)" },
@@ -147,7 +148,7 @@ export default function PromptEngineeringPage() {
 
         {/* Prompt Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📝 提示詞對比</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><FileText size={20} style={{ color: "var(--accent-blue)" }} /> 提示詞對比</h2>
           <CodeDiff
             before={badPlan}
             after={goodPlan}
@@ -159,7 +160,7 @@ export default function PromptEngineeringPage() {
 
         {/* Output Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📊 計畫產出品質對比</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><BarChart3 size={20} style={{ color: "var(--accent-amber)" }} /> 計畫產出品質對比</h2>
           <CodeDiff
             before={badOutput}
             after={goodOutput}
@@ -176,7 +177,7 @@ export default function PromptEngineeringPage() {
 
         {/* Iterating on plan */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🔄 如何迭代計畫</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><RefreshCw size={20} style={{ color: "var(--accent-green)" }} /> 如何迭代計畫</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             計畫不滿意時直接在對話框說「調整」，不需要重新 /plan：
           </p>
@@ -193,7 +194,7 @@ export default function PromptEngineeringPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-orange)" }} /> 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command={badPlan} description="❌ 不要這樣寫" />
             <CommandBlock command={goodPlan} description="✅ 套用這個範本，改成你的功能" />

@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import { ChevronRight, ArrowLeft } from "lucide-react";
 import { ALL_COMMANDS, COMMANDS_BY_SLUG } from "../../data";
 import CommandDetail from "../../components/CommandDetail";
+import Navbar from "../../../components/Navbar";
 
 type Props = { params: Promise<{ slug: string }> };
 
@@ -25,31 +27,44 @@ export default async function CommandPage({ params }: Props) {
   if (!command) notFound();
 
   return (
-    <main className="min-h-screen px-4 py-16">
-      <div className="max-w-3xl mx-auto">
-        {/* Breadcrumb */}
-        <nav className="flex items-center gap-2 text-sm text-[var(--text-tertiary)] mb-8">
-          <Link href="/cheatsheet" className="hover:text-[var(--text-secondary)] transition-colors">
-            速查表
-          </Link>
-          <span>/</span>
-          <span className="text-[var(--text-secondary)]">{command.name}</span>
-        </nav>
+    <div className="min-h-screen" style={{ backgroundColor: "var(--bg-base)" }}>
+      <Navbar />
 
-        {/* Detail */}
-        <CommandDetail command={command} allCommands={ALL_COMMANDS} />
+      <main className="px-4 py-16">
+        <div className="max-w-3xl mx-auto">
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-1.5 text-sm mb-8" style={{ color: "var(--text-tertiary)" }}>
+            <Link
+              href="/cheatsheet"
+              className="hover:text-[var(--text-primary)] transition-colors px-1.5 py-0.5 rounded"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              速查表
+            </Link>
+            <ChevronRight size={14} style={{ color: "var(--text-tertiary)" }} />
+            <span style={{ color: "var(--text-primary)" }}>{command.name}</span>
+          </nav>
 
-        {/* Back button */}
-        <div className="mt-12 pt-8 border-t border-[var(--border-subtle)]">
-          <Link
-            href="/cheatsheet"
-            className="inline-flex items-center gap-2 text-sm text-[var(--text-tertiary)] hover:text-[var(--text-primary)] transition-colors"
-          >
-            <span>←</span>
-            <span>回到所有指令</span>
-          </Link>
+          {/* Detail */}
+          <CommandDetail command={command} allCommands={ALL_COMMANDS} />
+
+          {/* Back button */}
+          <div className="mt-12 pt-8" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+            <Link
+              href="/cheatsheet"
+              className="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg text-sm font-medium transition-all nav-link"
+              style={{
+                backgroundColor: "var(--bg-surface-1)",
+                border: "1px solid var(--border-medium)",
+                color: "var(--text-secondary)",
+              }}
+            >
+              <ArrowLeft size={16} />
+              <span>回到所有指令</span>
+            </Link>
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+    </div>
   );
 }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Search, BarChart3, MessageSquare, Shield, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import CommandBlock from "../../components/CommandBlock";
 import ChatDemo from "../../components/ChatDemo";
@@ -93,12 +94,12 @@ export default function CodeQualityPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-brand)" }}>程式碼品質</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🔍</span>
+            <Search size={36} style={{ color: "var(--accent-brand)" }} />
             <div>
               <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>程式碼品質</h1>
               <p style={{ color: "var(--accent-brand)" }}>PR 被打回來了</p>
@@ -122,7 +123,7 @@ export default function CodeQualityPage() {
 
         {/* Severity levels */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>📊 嚴重程度說明</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><BarChart3 size={20} style={{ color: "var(--accent-amber)" }} /> 嚴重程度說明</h2>
           <div className="space-y-2">
             {[
               { level: "CRITICAL", icon: "🔴", desc: "安全漏洞或資料損失風險", action: "BLOCK — 必須修復才能合併", color: "var(--accent-rose)" },
@@ -146,7 +147,7 @@ export default function CodeQualityPage() {
 
         {/* Demo: /code-review */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 /code-review 示範</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-brand)" }} /> /code-review 示範</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             ECC 的 code-reviewer agent 自動檢查安全性、程式品質、測試覆蓋率
           </p>
@@ -155,7 +156,7 @@ export default function CodeQualityPage() {
 
         {/* Demo: /refactor-clean */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 /refactor-clean 示範</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-green)" }} /> /refactor-clean 示範</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             自動掃描死碼、重複程式碼，安全刪除不再使用的部分
           </p>
@@ -164,7 +165,7 @@ export default function CodeQualityPage() {
 
         {/* Security checklist */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🛡️ 安全檢查清單</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Shield size={20} style={{ color: "var(--accent-rose)" }} /> 安全檢查清單</h2>
           <div
             className="rounded-xl p-5"
             style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}
@@ -192,7 +193,7 @@ export default function CodeQualityPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 現在就試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-blue)" }} /> 現在就試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="/code-review" description="審查目前專案的程式碼" />
             <CommandBlock command="/refactor-clean" description="清理死碼和重複程式碼" />

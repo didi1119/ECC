@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { Settings, Clapperboard, Bot, Clock, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import ProgressPipeline, { PipelineStage } from "../../../components/animations/ProgressPipeline";
@@ -26,14 +27,14 @@ export default function PrdPipelinePage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-brand)" }}>PRD 流水線</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">⚙️</span>
+            <Settings size={36} style={{ color: "var(--accent-brand)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>PRD 到上線全自動</h1>
@@ -61,7 +62,7 @@ export default function PrdPipelinePage() {
         {/* Pipeline visualization */}
         <div className="mb-10">
           <div className="flex items-center justify-between mb-4">
-            <h2 className="text-lg font-bold" style={{ color: "var(--text-primary)" }}>🎬 流水線即時進度</h2>
+            <h2 className="text-lg font-bold flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Clapperboard size={20} style={{ color: "var(--accent-brand)" }} /> 流水線即時進度</h2>
             <button
               onClick={() => { setKey((k: number) => k + 1); setDone(false); }}
               className="px-3 py-1.5 rounded-lg text-xs font-medium transition-all hover:opacity-80"
@@ -93,7 +94,7 @@ export default function PrdPipelinePage() {
 
         {/* What each agent does */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🤖 各階段使用的 Agent</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Bot size={20} style={{ color: "var(--accent-blue)" }} /> 各階段使用的 Agent</h2>
           <div className="space-y-2">
             {stages.map((stage) => (
               <div
@@ -112,7 +113,7 @@ export default function PrdPipelinePage() {
 
         {/* Time comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⏱️ 效率對比</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Clock size={20} style={{ color: "var(--accent-amber)" }} /> 效率對比</h2>
           <div className="grid grid-cols-2 gap-4">
             <div className="rounded-xl p-4" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid rgba(244,114,182,0.2)" }}>
               <p className="text-sm font-bold mb-3" style={{ color: "var(--accent-rose)" }}>❌ 傳統方式</p>
@@ -160,7 +161,7 @@ export default function PrdPipelinePage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-green)" }} /> 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="/prp-plan 根據以下 PRD 自動規劃並實作..." description="觸發全自動 PRD 流水線" />
             <CommandBlock command="/prp-implement" description="執行已規劃的 PRP 方案" />

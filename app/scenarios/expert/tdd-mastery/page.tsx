@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { FlaskConical, RefreshCw, FileText, BarChart3, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import CodeDiff from "../../../components/CodeDiff";
@@ -109,16 +110,16 @@ export default function TddMasteryPage() {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
           <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-orange)" }}>TDD 完整實戰</span>
         </div>
 
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🧪</span>
+            <FlaskConical size={36} style={{ color: "var(--accent-rose)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>TDD 完整實戰</h1>
@@ -131,7 +132,7 @@ export default function TddMasteryPage() {
 
         {/* TDD Cycle Visual */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔄 TDD 三階段</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><RefreshCw size={20} style={{ color: "var(--accent-green)" }} /> TDD 三階段</h2>
           <div className="grid grid-cols-3 gap-3">
             {[
               { phase: "RED", desc: "先寫會失敗的測試", color: "var(--accent-rose)", bg: "rgba(244,114,182,0.1)", detail: "明確定義你要的行為，測試跑起來要是紅的" },
@@ -149,7 +150,7 @@ export default function TddMasteryPage() {
 
         {/* Prompt Quality Comparison */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📝 提示詞品質對比</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><FileText size={20} style={{ color: "var(--accent-brand)" }} /> 提示詞品質對比</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>提示越具體，Claude 產出的測試越精準：</p>
           <CodeDiff
             before={beforePrompt}
@@ -194,7 +195,7 @@ export default function TddMasteryPage() {
 
         {/* Coverage */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📊 Coverage 怎麼看</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><BarChart3 size={20} style={{ color: "var(--accent-amber)" }} /> Coverage 怎麼看</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>跑 <code style={{ color: "var(--text-primary)" }}>npx vitest run --coverage</code> 後看報告：</p>
           <div className="rounded-xl p-4 font-mono text-xs" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
             <div className="grid grid-cols-4 gap-2 mb-2 text-xs font-bold" style={{ color: "var(--text-secondary)" }}>
@@ -214,7 +215,7 @@ export default function TddMasteryPage() {
 
         {/* Good /tdd prompt */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 好的 /tdd 提示詞範本</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-blue)" }} /> 好的 /tdd 提示詞範本</h2>
           <div className="space-y-3">
             <CommandBlock command={badPrompt} description="❌ 太模糊，Claude 可能跳過 RED" />
             <CommandBlock command={goodPrompt} description="✅ 具體明確，確保 RED → GREEN 流程" />

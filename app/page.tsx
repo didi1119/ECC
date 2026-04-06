@@ -2,6 +2,7 @@ import Link from "next/link";
 import Navbar from "./components/Navbar";
 import CommandBlock from "./components/CommandBlock";
 import HoverCard from "./components/HoverCard";
+import RevealOnScroll from "./components/RevealOnScroll";
 
 const scenarios = [
   {
@@ -214,7 +215,7 @@ export default function Home() {
               href="/cheatsheet"
               className="nav-link px-6 py-3 rounded-lg font-medium text-sm transition-all"
               style={{
-                backgroundColor: "var(--bg-surface-1)",
+                backgroundColor: "transparent",
                 border: "1px solid var(--border-medium)",
                 color: "var(--text-primary)",
               }}
@@ -249,231 +250,269 @@ export default function Home() {
       {/* Scenarios */}
       <section className="px-6 pb-20" style={{ paddingTop: "clamp(2rem, 1rem + 3vw, 5rem)" }}>
         <div className="max-w-6xl mx-auto">
-          <h2
-            className="text-center font-semibold mb-2"
-            style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
-          >
-            選擇你的情境
-          </h2>
-          <p
-            className="text-center mb-10"
-            style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}
-          >
-            每個情境從一個真實開發問題出發，帶你學會對應的 ECC 工具
-          </p>
+          <RevealOnScroll>
+            <h2
+              className="text-center font-semibold mb-2"
+              style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
+            >
+              選擇你的情境
+            </h2>
+            <p
+              className="text-center mb-10"
+              style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}
+            >
+              每個情境從一個真實開發問題出發，帶你學會對應的 ECC 工具
+            </p>
+          </RevealOnScroll>
 
           {/* Featured first card + grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
             {scenarios.map((s, i) => (
-              <HoverCard
-                key={s.href}
-                href={s.href}
-                accentHex={s.accentHex}
-                className={`p-6 ${i === 0 ? "md:col-span-2 lg:col-span-2" : ""}`}
-              >
-                <div className="flex items-start justify-between mb-4">
-                  <span className="text-2xl">{s.emoji}</span>
-                  <div className="flex items-center gap-2">
-                    <span
-                      className="text-[11px] uppercase font-semibold px-2 py-0.5 rounded-md tracking-wider"
-                      style={{
-                        backgroundColor: `${s.accentHex}15`,
-                        color: s.difficultyColor,
-                        border: `1px solid ${s.accentHex}30`,
-                      }}
-                    >
-                      {s.difficulty}
-                    </span>
-                    <span className="text-xs" style={{ color: "var(--text-tertiary)" }}>
-                      {s.time}
-                    </span>
+              <RevealOnScroll key={s.href} delay={i * 80}>
+                <HoverCard
+                  href={s.href}
+                  accentHex={s.accentHex}
+                  className={`p-6 ${i === 0 ? "md:col-span-2 lg:col-span-2" : ""}`}
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <span className="text-2xl">{s.emoji}</span>
+                    <div className="flex items-center gap-2">
+                      <span
+                        className="text-[11px] uppercase font-semibold px-2 py-0.5 rounded-md tracking-wider"
+                        style={{
+                          backgroundColor: `${s.accentHex}15`,
+                          color: s.difficultyColor,
+                          border: `1px solid ${s.accentHex}30`,
+                        }}
+                      >
+                        {s.difficulty}
+                      </span>
+                      <span className="text-xs" style={{ color: "var(--text-tertiary)" }}>
+                        {s.time}
+                      </span>
+                    </div>
                   </div>
-                </div>
 
-                <h3
-                  className="font-semibold mb-1"
-                  style={{ color: "var(--text-primary)", fontSize: "1rem" }}
-                >
-                  {s.title}
-                </h3>
-                <p className="text-xs mb-2" style={{ color: s.difficultyColor }}>
-                  {s.subtitle}
-                </p>
-                <p
-                  className="mb-4 leading-relaxed"
-                  style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}
-                >
-                  {s.story}
-                </p>
+                  <h3
+                    className="font-semibold mb-1"
+                    style={{ color: "var(--text-primary)", fontSize: "1rem" }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p className="text-xs mb-2" style={{ color: s.difficultyColor }}>
+                    {s.subtitle}
+                  </p>
+                  <p
+                    className="mb-4 leading-relaxed"
+                    style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}
+                  >
+                    {s.story}
+                  </p>
 
-                <div className="flex flex-wrap gap-1.5">
-                  {s.commands.map((cmd) => (
-                    <code
-                      key={cmd}
-                      className="text-xs px-2 py-0.5 rounded-md font-mono"
-                      style={{
-                        backgroundColor: "var(--bg-surface-2)",
-                        border: "1px solid var(--border-subtle)",
-                        color: "var(--text-secondary)",
-                      }}
-                    >
-                      {cmd}
-                    </code>
-                  ))}
-                </div>
-              </HoverCard>
+                  <div className="flex flex-wrap gap-1.5">
+                    {s.commands.map((cmd) => (
+                      <code
+                        key={cmd}
+                        className="text-xs px-2 py-0.5 rounded-md font-mono"
+                        style={{
+                          backgroundColor: "var(--bg-surface-2)",
+                          border: "1px solid var(--border-subtle)",
+                          color: "var(--text-secondary)",
+                        }}
+                      >
+                        {cmd}
+                      </code>
+                    ))}
+                  </div>
+                </HoverCard>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Expert Scenarios */}
-      <section className="px-6 pb-20">
-        <div className="max-w-6xl mx-auto">
-          {/* Divider with label */}
-          <div className="flex items-center gap-4 mb-8">
-            <div className="flex-1 h-px" style={{ backgroundColor: "var(--border-subtle)" }} />
-            <span
-              className="text-[11px] uppercase font-semibold tracking-wider px-3 py-1 rounded-md"
-              style={{
-                backgroundColor: "rgba(244,114,182,0.08)",
-                color: "var(--accent-rose)",
-                border: "1px solid rgba(244,114,182,0.15)",
-              }}
-            >
-              高手區域
-            </span>
-            <div className="flex-1 h-px" style={{ backgroundColor: "var(--border-subtle)" }} />
-          </div>
+      {/* Expert Scenarios — visually distinct */}
+      <section
+        className="px-6 pb-20 pt-16 relative"
+        style={{
+          backgroundColor: "var(--bg-surface-1)",
+          borderTop: "1px solid var(--border-subtle)",
+          borderBottom: "1px solid var(--border-subtle)",
+        }}
+      >
+        {/* Atmospheric glow */}
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background: "radial-gradient(ellipse 80% 50% at 50% 0%, rgba(244,114,182,0.04) 0%, transparent 70%)",
+          }}
+        />
 
-          <h2
-            className="font-semibold mb-2"
-            style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
-          >
-            高手情境
-          </h2>
-          <p
-            className="mb-8"
-            style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}
-          >
-            進階技巧 — 每個情境都有互動動畫讓你直觀理解運作方式
-          </p>
+        <div className="max-w-6xl mx-auto relative">
+          <RevealOnScroll>
+            {/* Dramatic divider with glow */}
+            <div className="flex items-center gap-4 mb-8">
+              <div
+                className="flex-1 h-px"
+                style={{
+                  background: "linear-gradient(to right, transparent, var(--accent-rose), transparent)",
+                  opacity: 0.3,
+                }}
+              />
+              <span
+                className="text-xs uppercase font-bold tracking-[0.15em] px-4 py-1.5 rounded-full"
+                style={{
+                  backgroundColor: "rgba(244,114,182,0.12)",
+                  color: "var(--accent-rose)",
+                  border: "1px solid rgba(244,114,182,0.25)",
+                  boxShadow: "0 0 20px rgba(244,114,182,0.1)",
+                }}
+              >
+                高手區域
+              </span>
+              <div
+                className="flex-1 h-px"
+                style={{
+                  background: "linear-gradient(to left, transparent, var(--accent-rose), transparent)",
+                  opacity: 0.3,
+                }}
+              />
+            </div>
+
+            <h2
+              className="font-semibold mb-2"
+              style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
+            >
+              高手情境
+            </h2>
+            <p
+              className="mb-8"
+              style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}
+            >
+              進階技巧 — 每個情境都有互動動畫讓你直觀理解運作方式
+            </p>
+          </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {expertScenarios.map((s) => (
-              <HoverCard
-                key={s.href}
-                href={s.href}
-                accentHex={s.accentHex}
-                className="p-5"
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-2xl">{s.emoji}</span>
-                  <span
-                    className="text-[11px] uppercase font-semibold px-2 py-0.5 rounded-md tracking-wider"
-                    style={{
-                      backgroundColor: "rgba(244,114,182,0.08)",
-                      color: "var(--accent-rose)",
-                      border: "1px solid rgba(244,114,182,0.15)",
-                    }}
-                  >
-                    高手
-                  </span>
-                </div>
-                <h3
-                  className="font-semibold text-sm mb-2"
-                  style={{ color: "var(--text-primary)" }}
+            {expertScenarios.map((s, i) => (
+              <RevealOnScroll key={s.href} delay={i * 80}>
+                <HoverCard
+                  href={s.href}
+                  accentHex={s.accentHex}
+                  className="p-5 expert-card"
                 >
-                  {s.title}
-                </h3>
-                <p
-                  className="text-sm mb-4 leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {s.story}
-                </p>
-                <div className="flex flex-wrap gap-1.5">
-                  {s.tags.map((tag) => (
-                    <code
-                      key={tag}
-                      className="text-xs px-2 py-0.5 rounded-md font-mono"
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-2xl">{s.emoji}</span>
+                    <span
+                      className="text-[11px] uppercase font-semibold px-2 py-0.5 rounded-md tracking-wider"
                       style={{
-                        backgroundColor: "var(--bg-surface-2)",
-                        border: "1px solid var(--border-subtle)",
-                        color: s.accentHex,
+                        backgroundColor: "rgba(244,114,182,0.08)",
+                        color: "var(--accent-rose)",
+                        border: "1px solid rgba(244,114,182,0.15)",
                       }}
                     >
-                      {tag}
-                    </code>
-                  ))}
-                </div>
-              </HoverCard>
+                      高手
+                    </span>
+                  </div>
+                  <h3
+                    className="font-semibold text-sm mb-2"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {s.title}
+                  </h3>
+                  <p
+                    className="text-sm mb-4 leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {s.story}
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {s.tags.map((tag) => (
+                      <code
+                        key={tag}
+                        className="text-xs px-2 py-0.5 rounded-md font-mono"
+                        style={{
+                          backgroundColor: "var(--bg-surface-2)",
+                          border: "1px solid var(--border-subtle)",
+                          color: s.accentHex,
+                        }}
+                      >
+                        {tag}
+                      </code>
+                    ))}
+                  </div>
+                </HoverCard>
+              </RevealOnScroll>
             ))}
           </div>
         </div>
       </section>
 
       {/* Quick Commands */}
-      <section className="px-6 pb-20">
+      <section className="px-6 pb-20 pt-20">
         <div className="max-w-6xl mx-auto">
-          <div
-            className="rounded-xl p-8"
-            style={{
-              backgroundColor: "var(--bg-surface-1)",
-              border: "1px solid var(--border-subtle)",
-            }}
-          >
-            <h2
-              className="font-semibold mb-1"
-              style={{ fontSize: "1.25rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
+          <RevealOnScroll>
+            <div
+              className="rounded-xl p-8"
+              style={{
+                backgroundColor: "var(--bg-surface-1)",
+                border: "1px solid var(--border-subtle)",
+              }}
             >
-              最常用的 6 個指令
-            </h2>
-            <p className="mb-6" style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
-              記住這些，你已掌握 ECC 的 80% 核心功能
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-              {quickCommands.map((item) => (
-                <div
-                  key={item.cmd}
-                  className="flex items-center gap-3 p-3 rounded-lg"
-                  style={{
-                    backgroundColor: "var(--bg-surface-2)",
-                    border: "1px solid var(--border-subtle)",
-                  }}
-                >
-                  <code
-                    className="font-mono font-bold text-sm flex-shrink-0"
-                    style={{ color: "var(--accent-blue)" }}
+              <h2
+                className="font-semibold mb-1"
+                style={{ fontSize: "1.25rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
+              >
+                最常用的 6 個指令
+              </h2>
+              <p className="mb-6" style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
+                記住這些，你已掌握 ECC 的 80% 核心功能
+              </p>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {quickCommands.map((item) => (
+                  <div
+                    key={item.cmd}
+                    className="flex items-center gap-3 p-3 rounded-lg"
+                    style={{
+                      backgroundColor: "var(--bg-surface-2)",
+                      border: "1px solid var(--border-subtle)",
+                    }}
                   >
-                    {item.cmd}
-                  </code>
-                  <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
-                    {item.desc}
-                  </span>
-                </div>
-              ))}
+                    <code
+                      className="font-mono font-bold text-sm flex-shrink-0"
+                      style={{ color: "var(--accent-blue)" }}
+                    >
+                      {item.cmd}
+                    </code>
+                    <span className="text-sm" style={{ color: "var(--text-secondary)" }}>
+                      {item.desc}
+                    </span>
+                  </div>
+                ))}
+              </div>
             </div>
-          </div>
+          </RevealOnScroll>
         </div>
       </section>
 
       {/* Install */}
       <section className="px-6 pb-24">
         <div className="max-w-2xl mx-auto text-center">
-          <h2
-            className="font-semibold mb-2"
-            style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
-          >
-            還沒安裝 ECC？
-          </h2>
-          <p className="mb-6" style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
-            一行指令完成安裝
-          </p>
-          <CommandBlock
-            command="git clone https://github.com/affaan-m/everything-claude-code.git && cd everything-claude-code && node scripts/install-apply.js --profile full"
-            description="安裝 ECC（全功能版）"
-          />
+          <RevealOnScroll>
+            <h2
+              className="font-semibold mb-2"
+              style={{ fontSize: "1.5rem", letterSpacing: "-0.015em", color: "var(--text-primary)" }}
+            >
+              還沒安裝 ECC？
+            </h2>
+            <p className="mb-6" style={{ color: "var(--text-secondary)", fontSize: "0.875rem" }}>
+              一行指令完成安裝
+            </p>
+            <CommandBlock
+              command="git clone https://github.com/affaan-m/everything-claude-code.git && cd everything-claude-code && node scripts/install-apply.js --profile full"
+              description="安裝 ECC（全功能版）"
+            />
+          </RevealOnScroll>
         </div>
       </section>
 

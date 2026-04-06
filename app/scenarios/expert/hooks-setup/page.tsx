@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { Anchor, ClipboardList, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import CodeDiff from "../../../components/CodeDiff";
@@ -82,16 +83,16 @@ export default function HooksSetupPage() {
         {/* Breadcrumb */}
         <div className="flex items-center gap-2 mb-6">
           <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-          <span style={{ color: "var(--text-tertiary)" }}>/</span>
+          <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
           <span className="text-xs" style={{ color: "var(--accent-orange)" }}>Hooks 自動化設定</span>
         </div>
 
         {/* Header */}
         <div className="mb-10">
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🪝</span>
+            <Anchor size={36} style={{ color: "var(--accent-green)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>Hooks 自動化設定</h1>
@@ -110,7 +111,7 @@ export default function HooksSetupPage() {
 
         {/* Steps Overview */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>📋 設定流程</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><ClipboardList size={20} style={{ color: "var(--accent-blue)" }} /> 設定流程</h2>
           <StepFlow steps={hookSteps} />
         </div>
 
@@ -174,7 +175,7 @@ export default function HooksSetupPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 試試看</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-orange)" }} /> 試試看</h2>
           <div className="space-y-3">
             <CommandBlock command="幫我在 .claude.json 設定 PostToolUse hook，每次寫完 .ts 或 .tsx 檔案就自動跑 npm run format 和 npm run lint" description="讓 Claude 幫你設定 hooks" />
             <CommandBlock command="幫我加入 PreToolUse hook，阻擋任何超過 800 行的單一檔案寫入" description="防巨型檔案守衛" />

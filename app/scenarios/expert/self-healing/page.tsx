@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
 import Link from "next/link";
+import { RefreshCw, Clapperboard, Settings, Rocket, ChevronRight } from "lucide-react";
 import Navbar from "../../../components/Navbar";
 import CommandBlock from "../../../components/CommandBlock";
 import AnimatedTerminal, { TerminalLine } from "../../../components/animations/AnimatedTerminal";
@@ -47,14 +48,14 @@ export default function SelfHealingPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-rose)" }}>高手情境</span>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-orange)" }}>自我修復迴圈</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🔁</span>
+            <RefreshCw size={36} style={{ color: "var(--accent-orange)" }} />
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>Agent 自我修復迴圈</h1>
@@ -81,7 +82,7 @@ export default function SelfHealingPage() {
 
         {/* Concept */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🔄 自我修復迴圈原理</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><RefreshCw size={20} style={{ color: "var(--accent-blue)" }} /> 自我修復迴圈原理</h2>
           <div className="flex items-center gap-2 flex-wrap">
             {[
               { step: "執行測試", color: "var(--accent-blue)", icon: "▶" },
@@ -115,7 +116,7 @@ export default function SelfHealingPage() {
 
         {/* Animated Demo */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🎬 即時動畫示範</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Clapperboard size={20} style={{ color: "var(--accent-brand)" }} /> 即時動畫示範</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>點擊切換迴圈輪次，看 Agent 如何一步步修復問題</p>
 
           {/* Round selector */}
@@ -165,7 +166,7 @@ export default function SelfHealingPage() {
 
         {/* How it actually works */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⚙️ 三種實作方式</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Settings size={20} style={{ color: "var(--accent-amber)" }} /> 三種實作方式</h2>
           <div className="space-y-4">
             {/* Method 1 */}
             <div className="rounded-xl p-5" style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}>
@@ -216,7 +217,7 @@ export default function SelfHealingPage() {
 
         {/* Try it */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🚀 立即試試</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Rocket size={20} style={{ color: "var(--accent-green)" }} /> 立即試試</h2>
           <div className="space-y-3">
             <CommandBlock command="/loop 執行 npx vitest run，失敗就自動修復直到全過" description="最推薦：有條件自我修復迴圈" />
             <CommandBlock command="/tdd" description="先寫測試再讓 Claude 修復實作" />

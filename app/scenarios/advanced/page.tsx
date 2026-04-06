@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Bot, Brain, MessageSquare, Zap, Wrench, Target, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import CommandBlock from "../../components/CommandBlock";
 import ChatDemo from "../../components/ChatDemo";
@@ -79,12 +80,12 @@ export default function AdvancedPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-rose)" }}>進階編排</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">🧠</span>
+            <Brain size={36} style={{ color: "var(--accent-rose)" }} />
             <div>
               <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>進階編排</h1>
               <p style={{ color: "var(--accent-rose)" }}>多 Agent 並行作戰</p>
@@ -106,7 +107,7 @@ export default function AdvancedPage() {
 
         {/* Agent ecosystem */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🤖 ECC 的 38 個 Agents</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Bot size={20} style={{ color: "var(--accent-brand)" }} /> ECC 的 38 個 Agents</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             每個 Agent 都是專門化的 AI，只負責自己擅長的領域。以下是最常用的 8 個：
           </p>
@@ -131,7 +132,7 @@ export default function AdvancedPage() {
 
         {/* /multi-plan demo */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>💬 /multi-plan 多 Agent 並行</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><MessageSquare size={20} style={{ color: "var(--accent-rose)" }} /> /multi-plan 多 Agent 並行</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             <code style={{ color: "var(--accent-rose)" }}>/multi-plan</code> 自動拆分大任務，
             啟動多個 Agent 並行執行，大幅縮短時間
@@ -141,7 +142,7 @@ export default function AdvancedPage() {
 
         {/* Parallel execution concept */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⚡ 為什麼並行這麼重要？</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Zap size={20} style={{ color: "var(--accent-amber)" }} /> 為什麼並行這麼重要？</h2>
           <div
             className="rounded-xl p-5"
             style={{ backgroundColor: "var(--bg-surface-1)", border: "1px solid var(--border-subtle)" }}
@@ -181,7 +182,7 @@ export default function AdvancedPage() {
 
         {/* Advanced commands */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🛠️ 進階指令</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Wrench size={20} style={{ color: "var(--accent-orange)" }} /> 進階指令</h2>
           <div className="space-y-3">
             <CommandBlock command="/multi-plan 你的大型任務描述" description="拆分任務給多個並行 Agent" />
             <CommandBlock command="/orchestrate" description="手動編排 Agent 執行順序" />
@@ -192,7 +193,7 @@ export default function AdvancedPage() {
 
         {/* When to use */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>🎯 什麼時候用多 Agent？</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Target size={20} style={{ color: "var(--accent-green)" }} /> 什麼時候用多 Agent？</h2>
           <div className="space-y-2">
             {[
               { use: "用多 Agent", examples: ["大型重構（前後端同時改）", "多模組並行開發", "跨語言專案（TypeScript + Python）"], color: "var(--accent-green)" },

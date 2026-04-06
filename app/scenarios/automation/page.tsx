@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { Anchor, Settings, FileText, RefreshCw, Zap, ChevronRight } from "lucide-react";
 import Navbar from "../../components/Navbar";
 import CommandBlock from "../../components/CommandBlock";
 import ChatDemo from "../../components/ChatDemo";
@@ -78,12 +79,12 @@ export default function AutomationPage() {
         <div className="mb-10">
           <div className="flex items-center gap-2 mb-3">
             <Link href="/" className="text-xs hover:underline" style={{ color: "var(--text-secondary)" }}>首頁</Link>
-            <span style={{ color: "var(--text-tertiary)" }}>/</span>
+            <ChevronRight size={12} style={{ color: "var(--text-tertiary)" }} />
             <span className="text-xs" style={{ color: "var(--accent-orange)" }}>自動化魔法</span>
           </div>
 
           <div className="flex items-center gap-3 mb-4">
-            <span className="text-4xl">⚡</span>
+            <Zap size={36} style={{ color: "var(--accent-orange)" }} />
             <div>
               <h1 className="text-3xl font-bold" style={{ color: "var(--text-primary)" }}>自動化魔法</h1>
               <p style={{ color: "var(--accent-orange)" }}>讓 Claude 幫你省時間</p>
@@ -105,7 +106,7 @@ export default function AutomationPage() {
 
         {/* Hooks concept */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🎣 什麼是 Hooks？</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Anchor size={20} style={{ color: "var(--accent-green)" }} /> 什麼是 Hooks？</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             Hooks 是在特定事件發生時自動執行的指令。不需要你手動觸發，Claude Code 自動幫你跑。
           </p>
@@ -133,7 +134,7 @@ export default function AutomationPage() {
 
         {/* Common hooks */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⚙️ 最實用的 4 個 Hook 配置</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Settings size={20} style={{ color: "var(--accent-blue)" }} /> 最實用的 4 個 Hook 配置</h2>
           <div className="space-y-3">
             {hooks.map((hook) => (
               <div
@@ -161,7 +162,7 @@ export default function AutomationPage() {
 
         {/* Settings example */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>📄 設定範例</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><FileText size={20} style={{ color: "var(--accent-brand)" }} /> 設定範例</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             修改 <code style={{ color: "var(--accent-blue)" }}>~/.claude/settings.json</code> 加入 Hooks 設定
           </p>
@@ -185,7 +186,7 @@ export default function AutomationPage() {
 
         {/* /loop */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-2" style={{ color: "var(--text-primary)" }}>🔁 /loop — 定時重複執行</h2>
+          <h2 className="text-lg font-bold mb-2 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><RefreshCw size={20} style={{ color: "var(--accent-orange)" }} /> /loop — 定時重複執行</h2>
           <p className="text-sm mb-4" style={{ color: "var(--text-secondary)" }}>
             用 <code style={{ color: "var(--accent-orange)" }}>/loop</code> 設定定時任務，例如每 5 分鐘自動跑一次 code review
           </p>
@@ -199,7 +200,7 @@ export default function AutomationPage() {
 
         {/* Quick setup */}
         <div className="mb-10">
-          <h2 className="text-lg font-bold mb-4" style={{ color: "var(--text-primary)" }}>⚡ 快速啟用自動化</h2>
+          <h2 className="text-lg font-bold mb-4 flex items-center gap-2" style={{ color: "var(--text-primary)" }}><Zap size={20} style={{ color: "var(--accent-amber)" }} /> 快速啟用自動化</h2>
           <div className="space-y-3">
             <CommandBlock
               command="/update-config"
