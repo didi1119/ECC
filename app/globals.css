@@ -77,6 +77,16 @@ body::before {
   border-color: var(--border-strong);
 }
 
+/* Skill card — uses CSS custom properties set inline per skill color */
+.skill-card {
+  transition: border-color 200ms var(--ease-out),
+              box-shadow 200ms var(--ease-out);
+}
+.skill-card:hover {
+  border-color: var(--skill-hover-border, var(--border-medium));
+  box-shadow: var(--skill-hover-shadow, none);
+}
+
 /* Gradient text — only for hero headline */
 .gradient-text {
   background: linear-gradient(135deg, var(--accent-blue), var(--accent-brand));

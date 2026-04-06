@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Hexagon, ChevronDown, Zap } from "lucide-react";
+import { Hexagon, ChevronDown, Zap, Sparkles } from "lucide-react";
 
 const navItems = [
   { href: "/scenarios/beginner", label: "新手入門" },
@@ -29,7 +29,10 @@ export default function Navbar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [expertOpen, setExpertOpen] = useState(false);
   const [mobileExpertOpen, setMobileExpertOpen] = useState(false);
+  const [superpowersOpen, setSuperpowersOpen] = useState(false);
+  const [mobileSuperpowersOpen, setMobileSuperpowersOpen] = useState(false);
   const expertRef = useRef<HTMLDivElement>(null);
+  const superpowersRef = useRef<HTMLDivElement>(null);
   const mobileMenuRef = useRef<HTMLDivElement>(null);
 
   // Close mobile menu on route change
@@ -37,13 +40,18 @@ export default function Navbar() {
     setMobileOpen(false);
     setExpertOpen(false);
     setMobileExpertOpen(false);
+    setSuperpowersOpen(false);
+    setMobileSuperpowersOpen(false);
   }, [pathname]);
 
-  // Close expert dropdown on outside click
+  // Close dropdowns on outside click
   useEffect(() => {
     const handleClick = (e: MouseEvent) => {
       if (expertRef.current && !expertRef.current.contains(e.target as Node)) {
         setExpertOpen(false);
+      }
+      if (superpowersRef.current && !superpowersRef.current.contains(e.target as Node)) {
+        setSuperpowersOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClick);
@@ -56,6 +64,7 @@ export default function Navbar() {
   };
 
   const isExpertActive = expertItems.some((item) => pathname.startsWith(item.href));
+  const isSuperpowersActive = pathname.startsWith("/superpowers");
 
   return (
     <nav
@@ -112,7 +121,7 @@ export default function Navbar() {
               onMouseEnter={() => setExpertOpen(true)}
               onClick={() => setExpertOpen((prev) => !prev)}
               aria-expanded={expertOpen}
-              aria-haspopup="true"
+              aria-haspopup="menu"
             >
               <Zap size={12} style={{ color: "var(--accent-rose)" }} />
               <span>高手</span>
@@ -151,6 +160,97 @@ export default function Navbar() {
                   {item.label}
                 </Link>
               ))}
+            </div>
+          </div>
+          {/* Superpowers dropdown */}
+          <div ref={superpowersRef} className="relative">
+            <button
+              className="nav-link px-3 py-1.5 rounded-md text-xs font-medium transition-all flex items-center gap-1"
+              style={{
+                color: isSuperpowersActive ? "var(--text-primary)" : "var(--accent-brand)",
+                backgroundColor: isSuperpowersActive ? "var(--bg-surface-2)" : "transparent",
+                borderBottom: isSuperpowersActive ? "2px solid var(--accent-brand)" : "2px solid transparent",
+              }}
+              onMouseEnter={() => setSuperpowersOpen(true)}
+              onClick={() => setSuperpowersOpen((prev) => !prev)}
+              aria-expanded={superpowersOpen}
+              aria-haspopup="menu"
+            >
+              <Sparkles size={12} style={{ color: "var(--accent-brand)" }} />
+              <span>Superpowers</span>
+              <ChevronDown
+                size={12}
+                className="transition-transform"
+                style={{ transform: superpowersOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
+            </button>
+
+            {/* Superpowers dropdown panel */}
+            <div
+              className="absolute top-full right-0 mt-1 py-1 rounded-lg min-w-[200px]"
+              style={{
+                backgroundColor: "var(--bg-surface-1)",
+                border: "1px solid var(--border-medium)",
+                boxShadow: "0 8px 32px rgba(0,0,0,0.4)",
+                opacity: superpowersOpen ? 1 : 0,
+                transform: superpowersOpen ? "translateY(0)" : "translateY(-4px)",
+                pointerEvents: superpowersOpen ? "auto" : "none",
+                transition: "opacity 200ms ease, transform 200ms ease",
+              }}
+              onMouseEnter={() => setSuperpowersOpen(true)}
+              onMouseLeave={() => setSuperpowersOpen(false)}
+            >
+              <Link
+                href="/superpowers"
+                className="block px-4 py-2 text-xs font-medium transition-all nav-link"
+                style={{
+                  color: pathname === "/superpowers" ? "var(--accent-brand)" : "var(--text-secondary)",
+                  backgroundColor: pathname === "/superpowers" ? "rgba(124,106,239,0.08)" : "transparent",
+                }}
+              >
+                ⚡ 總覽 &amp; 安裝
+              </Link>
+              <Link
+                href="/superpowers/workflow"
+                className="block px-4 py-2 text-xs font-medium transition-all nav-link"
+                style={{
+                  color: pathname === "/superpowers/workflow" ? "var(--accent-brand)" : "var(--text-secondary)",
+                  backgroundColor: pathname === "/superpowers/workflow" ? "rgba(124,106,239,0.08)" : "transparent",
+                }}
+              >
+                🔢 7 步驟工作流程
+              </Link>
+              <div
+                className="my-1 mx-3"
+                style={{ height: "1px", backgroundColor: "var(--border-subtle)" }}
+              />
+              <p className="px-4 py-1 text-xs" style={{ color: "var(--text-tertiary)" }}>
+                14 個技能
+              </p>
+              {[
+                { slug: "brainstorming", label: "Brainstorming", color: "#60a5fa" },
+                { slug: "test-driven-development", label: "TDD", color: "#f59e0b" },
+                { slug: "systematic-debugging", label: "Systematic Debugging", color: "#f87171" },
+                { slug: "subagent-driven-development", label: "Subagent Dev", color: "#7c6aef" },
+              ].map((item) => (
+                <Link
+                  key={item.slug}
+                  href={`/superpowers/skills/${item.slug}`}
+                  className="block px-4 py-1.5 text-xs transition-all nav-link"
+                  style={{
+                    color: pathname.includes(item.slug) ? item.color : "var(--text-tertiary)",
+                  }}
+                >
+                  → {item.label}
+                </Link>
+              ))}
+              <Link
+                href="/superpowers"
+                className="block px-4 py-1.5 text-xs transition-all nav-link"
+                style={{ color: "var(--accent-brand)" }}
+              >
+                全部技能 →
+              </Link>
             </div>
           </div>
         </div>
@@ -218,6 +318,62 @@ export default function Navbar() {
               {item.label}
             </Link>
           ))}
+
+          {/* Superpowers section in mobile */}
+          <div>
+            <button
+              className="w-full flex items-center justify-between px-4 py-2.5 rounded-md text-sm font-medium transition-all nav-link"
+              style={{
+                color: isSuperpowersActive ? "var(--accent-brand)" : "var(--text-secondary)",
+                backgroundColor: isSuperpowersActive ? "rgba(124,106,239,0.08)" : "transparent",
+                borderLeft: isSuperpowersActive ? "3px solid var(--accent-brand)" : "3px solid transparent",
+              }}
+              onClick={() => setMobileSuperpowersOpen((prev) => !prev)}
+              aria-expanded={mobileSuperpowersOpen}
+            >
+              <span className="flex items-center gap-2">
+                <Sparkles size={14} style={{ color: "var(--accent-brand)" }} />
+                Superpowers
+              </span>
+              <ChevronDown
+                size={14}
+                className="transition-transform"
+                style={{ transform: mobileSuperpowersOpen ? "rotate(180deg)" : "rotate(0deg)" }}
+              />
+            </button>
+
+            <div
+              className="overflow-hidden"
+              style={{
+                maxHeight: mobileSuperpowersOpen ? "400px" : "0",
+                opacity: mobileSuperpowersOpen ? 1 : 0,
+                transition: "max-height 250ms ease, opacity 150ms ease",
+              }}
+            >
+              <div className="pl-4 space-y-0.5 py-1">
+                <Link
+                  href="/superpowers"
+                  className="block px-4 py-2 rounded-md text-sm transition-all nav-link"
+                  style={{
+                    color: pathname === "/superpowers" ? "var(--accent-brand)" : "var(--text-tertiary)",
+                    backgroundColor: pathname === "/superpowers" ? "rgba(124,106,239,0.06)" : "transparent",
+                  }}
+                >
+                  總覽 &amp; 安裝
+                </Link>
+                <Link
+                  href="/superpowers/workflow"
+                  className="block px-4 py-2 rounded-md text-sm transition-all nav-link"
+                  style={{
+                    color: pathname === "/superpowers/workflow" ? "var(--accent-brand)" : "var(--text-tertiary)",
+                    backgroundColor: pathname === "/superpowers/workflow" ? "rgba(124,106,239,0.06)" : "transparent",
+                  }}
+                >
+                  7 步驟工作流程
+                </Link>
+              </div>
+            </div>
+          </div>
 
           {/* Expert section in mobile */}
           <div>
