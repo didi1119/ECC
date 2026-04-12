@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Hexagon, ChevronDown, Zap, Sparkles } from "lucide-react";
+import { expertScenarioNavItems } from "../scenarios/expert/data";
 
 const navItems = [
   { href: "/scenarios/beginner", label: "新手入門" },
@@ -12,16 +13,6 @@ const navItems = [
   { href: "/scenarios/automation", label: "自動化" },
   { href: "/scenarios/advanced", label: "進階編排" },
   { href: "/cheatsheet", label: "速查表" },
-];
-
-const expertItems = [
-  { href: "/scenarios/expert/hooks-setup", label: "Hooks 設定" },
-  { href: "/scenarios/expert/tdd-mastery", label: "TDD 精通" },
-  { href: "/scenarios/expert/prompt-engineering", label: "Prompt 工程" },
-  { href: "/scenarios/expert/full-cycle", label: "完整流程" },
-  { href: "/scenarios/expert/self-healing", label: "自我修復" },
-  { href: "/scenarios/expert/multi-agent", label: "多 Agent" },
-  { href: "/scenarios/expert/prd-pipeline", label: "PRD 流程" },
 ];
 
 export default function Navbar() {
@@ -62,7 +53,7 @@ export default function Navbar() {
     return pathname.startsWith(href);
   };
 
-  const isExpertActive = expertItems.some((item) => pathname.startsWith(item.href));
+  const isExpertActive = expertScenarioNavItems.some((item) => pathname.startsWith(item.href));
   const isSuperpowersActive = pathname.startsWith("/superpowers");
 
   return (
@@ -146,7 +137,7 @@ export default function Navbar() {
               onMouseEnter={() => setExpertOpen(true)}
               onMouseLeave={() => setExpertOpen(false)}
             >
-              {expertItems.map((item) => (
+              {expertScenarioNavItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
@@ -405,7 +396,7 @@ export default function Navbar() {
               }}
             >
               <div className="pl-4 space-y-0.5 py-1">
-                {expertItems.map((item) => (
+                {expertScenarioNavItems.map((item) => (
                   <Link
                     key={item.href}
                     href={item.href}

@@ -3,6 +3,7 @@ import Navbar from "./components/Navbar";
 import CommandBlock from "./components/CommandBlock";
 import HoverCard from "./components/HoverCard";
 import RevealOnScroll from "./components/RevealOnScroll";
+import { expertScenarioCards } from "./scenarios/expert/data";
 
 const scenarios = [
   {
@@ -64,65 +65,6 @@ const scenarios = [
     difficultyColor: "var(--accent-rose)",
     time: "20 分鐘",
     accentHex: "#f472b6",
-  },
-];
-
-const expertScenarios = [
-  {
-    href: "/scenarios/expert/self-healing",
-    emoji: "🔁",
-    title: "Agent 自我修復迴圈",
-    story: "設定自動化迴圈，Claude 持續跑測試、發現問題、修復、再測試",
-    tags: ["AnimatedTerminal", "/loop", "自動修復"],
-    accentHex: "#fb923c",
-  },
-  {
-    href: "/scenarios/expert/prd-pipeline",
-    emoji: "⚙️",
-    title: "PRD 到上線全自動",
-    story: "PM 丟需求文件，ECC 自動跑完規劃、實作、審查、部署整條流水線",
-    tags: ["ProgressPipeline", "/prp-plan", "全自動"],
-    accentHex: "#7c6aef",
-  },
-  {
-    href: "/scenarios/expert/multi-agent",
-    emoji: "🤝",
-    title: "多 Agent 即時協作",
-    story: "前端、後端、基礎設施三個 Agent 同時出動，即時視覺化進度",
-    tags: ["ParallelAgentViz", "/multi-plan", "並行"],
-    accentHex: "#60a5fa",
-  },
-  {
-    href: "/scenarios/expert/hooks-setup",
-    emoji: "🪝",
-    title: "Hooks 自動化設定",
-    story: "每次寫完程式碼自動格式化、Lint、型別檢查，設定一次長期受益",
-    tags: ["PostToolUse", "PreToolUse", "實作教學"],
-    accentHex: "#34d399",
-  },
-  {
-    href: "/scenarios/expert/tdd-mastery",
-    emoji: "🧪",
-    title: "TDD 完整實戰",
-    story: "RED → GREEN → IMPROVE 三階段完整教學，含壞提示 vs 好提示對比",
-    tags: ["/tdd", "RED-GREEN-IMPROVE", "實作教學"],
-    accentHex: "#f472b6",
-  },
-  {
-    href: "/scenarios/expert/prompt-engineering",
-    emoji: "✍️",
-    title: "高效 /plan 提示工程",
-    story: "寫出讓 Claude 產出可執行計畫的提示詞，含四要素拆解和迭代技巧",
-    tags: ["/plan", "提示詞", "實作教學"],
-    accentHex: "#7c6aef",
-  },
-  {
-    href: "/scenarios/expert/full-cycle",
-    emoji: "🚀",
-    title: "完整功能開發全流程",
-    story: "7 步驟端到端：/plan → Hooks → /tdd → /code-review → /security-review → commit",
-    tags: ["總結篇", "端到端", "實作教學"],
-    accentHex: "#fb923c",
   },
 ];
 
@@ -389,12 +331,12 @@ export default function Home() {
               className="mb-8"
               style={{ color: "var(--text-secondary)", fontSize: "0.9375rem" }}
             >
-              進階技巧 — 每個情境都有互動動畫讓你直觀理解運作方式
+              進階技巧與自我監督工作流，幫 ECC 少打斷你、自己補流程、自己拉品質
             </p>
           </RevealOnScroll>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {expertScenarios.map((s, i) => (
+            {expertScenarioCards.map((s, i) => (
               <RevealOnScroll key={s.href} delay={i * 80}>
                 <HoverCard
                   href={s.href}
